@@ -62,6 +62,15 @@ public class TetroScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             transform.Rotate(0, 0, 90);
+
+            if (CheckValidPosition())
+            {
+
+            }
+            else
+            {
+                transform.Rotate(0, 0, -90);
+            }
         }
     }
 
