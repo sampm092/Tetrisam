@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ObjectScripts.cs" />
+    <Compile Include="Assets\TetroScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
