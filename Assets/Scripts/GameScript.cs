@@ -8,14 +8,45 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public static int gridWidth = 10;
     public static int gridHeight = 20;
-    void Start()
-    {
 
+    public void SpawnTet()
+    {
+        Vector3 spawnPosition = new Vector3(5f, 12f, 0f); 
+        Quaternion spawnRotation = Quaternion.identity;
+        GameObject prefab = Resources.Load<GameObject>(RandomTetroName());
+
+        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation);
     }
 
-    // Update is called once per frame
-    void Update()
+    string RandomTetroName()
     {
+        int randomIndex = UnityEngine.Random.Range(1, 8);
+        string RandomTetroFilename = "J";
+        switch (randomIndex)
+        {
+            case 1:
+                RandomTetroFilename = "J";
+                break;
+            case 2:
+                RandomTetroFilename = "L";
+                break;
+            case 3:
+                RandomTetroFilename = "Long";
+                return RandomTetroFilename;
+            case 4:
+                RandomTetroFilename = "S";
+                break;
+            case 5:
+                RandomTetroFilename = "Z";
+                break;
+            case 6:
+                RandomTetroFilename = "Square";
+                break;
+                // case 7:
+                //     RandomTetroFilename = "T";
+                //     break;
+        }
+        return RandomTetroFilename;
 
     }
 
