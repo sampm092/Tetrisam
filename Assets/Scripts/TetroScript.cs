@@ -8,6 +8,10 @@ public class TetroScript : MonoBehaviour
     float fall = 0;
     public GameScript GScript;
     public float fallSpeed = 1;
+    public bool Rotatable = true;
+    public bool LimitedRotate = false;
+
+
     void Start()
     {
         GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
@@ -61,15 +65,47 @@ public class TetroScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            transform.Rotate(0, 0, 90);
-
-            if (CheckValidPosition())
+            if (Rotatable)
             {
+                if (LimitedRotate)
+                {
+                    if (transform.rotation.eulerAngles.z >= 90)
+                    {
+                        transform.Rotate(0, 0, -90);
+                    }
+                    else
+                    {
+                        transform.Rotate(0, 0, 90);
+                    }
 
-            }
-            else
-            {
-                transform.Rotate(0, 0, -90);
+                }
+                else
+                {
+                    transform.Rotate(0, 0, 90);
+                }
+                if (CheckValidPosition())
+                {
+
+                }
+                else
+                {
+                    if (LimitedRotate)
+                    {
+                        if (transform.rotation.eulerAngles.z >= 90)
+                        {
+                            transform.Rotate(0, 0, -90);
+                        }
+                        else
+                        {
+                            transform.Rotate(0, 0, 90);
+                        }
+
+                    }
+                    else
+                    {
+                        transform.Rotate(0, 0, -90);
+                    }
+                }
             }
         }
     }
