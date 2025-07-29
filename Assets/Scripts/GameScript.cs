@@ -16,7 +16,7 @@ public class GameScript : MonoBehaviour
 
     void Update()
     {
-        
+
     }
     public void SpawnTet()
     {
@@ -51,9 +51,9 @@ public class GameScript : MonoBehaviour
             case 6:
                 RandomTetroFilename = "Square";
                 break;
-                // case 7:
-                //     RandomTetroFilename = "T";
-                //     break;
+            case 7:
+                RandomTetroFilename = "T";
+                break;
         }
         return RandomTetroFilename;
 
