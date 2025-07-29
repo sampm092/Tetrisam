@@ -65,9 +65,9 @@ public class TetroScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (Rotatable)
+            if (Rotatable) // make sure the object can be rotated or not
             {
-                if (LimitedRotate)
+                if (LimitedRotate) // make sure the object only able to rotate only between 90 and -90
                 {
                     if (transform.rotation.eulerAngles.z >= 90)
                     {
@@ -110,7 +110,7 @@ public class TetroScript : MonoBehaviour
         }
     }
 
-    bool CheckValidPosition()
+    bool CheckValidPosition() //checking the object is in a valid position to do a command
     {
         if (GScript == null)
         {

@@ -9,13 +9,22 @@ public class GameScript : MonoBehaviour
     public static int gridWidth = 10;
     public static int gridHeight = 20;
 
+    void Start()
+    {
+        SpawnTet();
+    }
+
+    void Update()
+    {
+        
+    }
     public void SpawnTet()
     {
-        Vector3 spawnPosition = new Vector3(5f, 12f, 0f); 
-        Quaternion spawnRotation = Quaternion.identity;
-        GameObject prefab = Resources.Load<GameObject>(RandomTetroName());
+        Vector3 spawnPosition = new Vector3(5f, 12f, 1f); //not using Vector2 anymore
+        Quaternion spawnRotation = Quaternion.identity; //for No Rotation 
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
 
-        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation);
+        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
     }
 
     string RandomTetroName()
@@ -52,11 +61,11 @@ public class GameScript : MonoBehaviour
 
     public bool CheckInsideStage(Vector2 pos)
     {
-        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= -9);
+        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= -9); // check if the object is inside grid/stage
     }
 
     public Vector2 Round(Vector2 pos)
     {
-        return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y));
+        return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)); //make sure its a round number
     }
 }
