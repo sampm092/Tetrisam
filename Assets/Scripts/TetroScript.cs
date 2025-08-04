@@ -30,7 +30,7 @@ public class TetroScript : MonoBehaviour
             transform.position += new Vector3(1, 0, 0);
             if (CheckValidPosition())
             {
-
+                GScript.updateGrid(this);
             }
             else
             {
@@ -42,7 +42,7 @@ public class TetroScript : MonoBehaviour
             transform.position += new Vector3(-1, 0, 0);
             if (CheckValidPosition())
             {
-
+                GScript.updateGrid(this);
             }
             else
             {
@@ -55,7 +55,7 @@ public class TetroScript : MonoBehaviour
 
             if (CheckValidPosition())
             {
-
+                GScript.updateGrid(this);
             }
             else
             {
@@ -87,7 +87,7 @@ public class TetroScript : MonoBehaviour
                 }
                 if (CheckValidPosition())
                 {
-
+                    GScript.updateGrid(this);
                 }
                 else
                 {
@@ -125,6 +125,11 @@ public class TetroScript : MonoBehaviour
             Vector2 pos = GScript.Round(mino.position);
 
             if (GScript.CheckInsideStage(pos) == false)
+            {
+                return false;
+            }
+
+            if (GScript.GetTransformAtGridPos(pos) != null && GScript.GetTransformAtGridPos(pos).parent != transform)
             {
                 return false;
             }

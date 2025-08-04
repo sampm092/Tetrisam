@@ -8,6 +8,7 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public static int gridWidth = 10;
     public static int gridHeight = 20;
+    public Transform[,] grid = new Transform[gridWidth, gridHeight];
 
     void Start()
     {
@@ -18,9 +19,46 @@ public class GameScript : MonoBehaviour
     {
 
     }
+
+    public void updateGrid(TetroScript tetroScript)
+    {
+        for (int y = 0; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    if (grid[x, y].parent == tetroScript)
+                    {
+                        grid[x, y] = null;
+                    }
+                }
+            }
+        }
+        foreach (Transform mino in tetroScript.transform)
+        {
+            Vector2 pos = Round(mino.position);
+            if (pos.y < gridHeight)
+            {
+                grid[(int)pos.x, (int)pos.y] = mino;
+            }
+        }
+    }
+
+    public Transform GetTransformAtGridPos(Vector2 pos)
+    {
+        if (pos.y > gridHeight -1)
+        {
+            return null;
+        }
+        else
+        {
+            return grid[(int)pos.x, (int)pos.y];
+        }
+    }
     public void SpawnTet()
     {
-        Vector3 spawnPosition = new Vector3(5f, 12f, 1f); //not using Vector2 anymore
+        Vector3 spawnPosition = new Vector3(5f, 20f, 1f); //not using Vector2 anymore
         Quaternion spawnRotation = Quaternion.identity; //for No Rotation 
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
 
