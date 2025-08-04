@@ -54,6 +54,12 @@ public class GameScript : MonoBehaviour
             case 7:
                 RandomTetroFilename = "T";
                 break;
+            case 8:
+                RandomTetroFilename = "Cross";
+                break;
+            case 9:
+                RandomTetroFilename = "U";
+                break;
         }
         return RandomTetroFilename;
 
