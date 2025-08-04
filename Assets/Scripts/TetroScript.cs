@@ -60,6 +60,8 @@ public class TetroScript : MonoBehaviour
             else
             {
                 transform.position += new Vector3(0, 1, 0);
+                enabled = false;
+                GScript.SpawnTet();
             }
             fall = Time.time;
         }
