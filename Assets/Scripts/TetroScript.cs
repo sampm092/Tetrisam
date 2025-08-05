@@ -49,13 +49,13 @@ public class TetroScript : MonoBehaviour
                 transform.position += new Vector3(1, 0, 0);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Time.time - fall >= fallSpeed)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Time.time - fall >= fallSpeed) //This logic makes the object fall 1 block every fallSpeed seconds (not falling like flappybird)
         {
             transform.position += new Vector3(0, -1, 0);
 
             if (CheckValidPosition())
             {
-                GScript.updateGrid(this);
+                GScript.updateGrid(this); //this = current tetromino
             }
             else
             {
@@ -120,15 +120,15 @@ public class TetroScript : MonoBehaviour
             return false;
         }
 
-        foreach (Transform mino in transform)
+        foreach (Transform mino in transform) //check every block in tetromino
         {
             Vector2 pos = GScript.Round(mino.position);
 
-            if (GScript.CheckInsideStage(pos) == false)
+            if (GScript.CheckInsideStage(pos) == false) //check if its inside the stage grid or not
             {
                 return false;
             }
-
+            //If the grid already has a block (mino) at that position && if that block is not part of this same tetromino:
             if (GScript.GetTransformAtGridPos(pos) != null && GScript.GetTransformAtGridPos(pos).parent != transform)
             {
                 return false;

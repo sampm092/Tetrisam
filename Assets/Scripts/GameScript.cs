@@ -8,7 +8,7 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public static int gridWidth = 10;
     public static int gridHeight = 20;
-    public Transform[,] grid = new Transform[gridWidth, gridHeight];
+    public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
 
     void Start()
     {
@@ -26,12 +26,9 @@ public class GameScript : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; ++x)
             {
-                if (grid[x, y] != null) // error
+                if (grid[x, y] != null && grid[x, y].parent == tetroScript.transform) //each = block, parent = prefab
                 {
-                    if (grid[x, y].parent == tetroScript.transform)
-                    {
-                        grid[x, y] = null;
-                    }
+                    grid[x, y] = null; // making sure the old position cleared so theres no collision or any trace
                 }
             }
         }
@@ -40,7 +37,7 @@ public class GameScript : MonoBehaviour
             Vector2 pos = Round(mino.position);
             if (pos.y < gridHeight)
             {
-                grid[(int)pos.x, (int)pos.y] = mino;
+                grid[(int)pos.x, (int)pos.y] = mino; //make sure that position already occupied
             }
         }
     }
@@ -49,13 +46,13 @@ public class GameScript : MonoBehaviour
     {
         int x = (int)pos.x;
         int y = (int)pos.y;
-        if (x < 0 || x >= gridWidth || y < 1 || y >= gridHeight)
+        if (x < 0 || x >= gridWidth || y < 1 || y >= gridHeight) //make sure the mino inside the valid position of the stage left x, right gridwidth, top gridheight, y 1
         {
             return null;
         }
         else
         {
-            return grid[(int)pos.x, (int)pos.y]; //error
+            return grid[x, y];
         }
     }
     public void SpawnTet()
@@ -110,7 +107,7 @@ public class GameScript : MonoBehaviour
         return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
     }
 
-    public Vector2 Round(Vector2 pos)
+    public Vector2 Round(Vector2 pos) //get mino [x,y] position and round it
     {
         return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)); //make sure its a round number
     }
