@@ -22,13 +22,13 @@ public class GameScript : MonoBehaviour
 
     public void updateGrid(TetroScript tetroScript)
     {
-        for (int y = 0; y < gridHeight; y++)
+        for (int y = 0; y < gridHeight; ++y)
         {
-            for (int x = 0; x < gridWidth; x++)
+            for (int x = 0; x < gridWidth; ++x)
             {
-                if (grid[x, y] != null)
+                if (grid[x, y] != null) // error
                 {
-                    if (grid[x, y].parent == tetroScript)
+                    if (grid[x, y].parent == tetroScript.transform)
                     {
                         grid[x, y] = null;
                     }
@@ -47,13 +47,15 @@ public class GameScript : MonoBehaviour
 
     public Transform GetTransformAtGridPos(Vector2 pos)
     {
-        if (pos.y > gridHeight -1)
+        int x = (int)pos.x;
+        int y = (int)pos.y;
+        if (x < 0 || x >= gridWidth || y < 1 || y >= gridHeight)
         {
             return null;
         }
         else
         {
-            return grid[(int)pos.x, (int)pos.y];
+            return grid[(int)pos.x, (int)pos.y]; //error
         }
     }
     public void SpawnTet()
@@ -67,7 +69,7 @@ public class GameScript : MonoBehaviour
 
     string RandomTetroName()
     {
-        int randomIndex = UnityEngine.Random.Range(1, 8);
+        int randomIndex = UnityEngine.Random.Range(1, 10);
         string RandomTetroFilename = "J";
         switch (randomIndex)
         {
@@ -105,7 +107,7 @@ public class GameScript : MonoBehaviour
 
     public bool CheckInsideStage(Vector2 pos)
     {
-        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= -9); // check if the object is inside grid/stage
+        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
     }
 
     public Vector2 Round(Vector2 pos)
