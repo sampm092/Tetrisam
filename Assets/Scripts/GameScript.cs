@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameScript : MonoBehaviour
@@ -9,10 +10,18 @@ public class GameScript : MonoBehaviour
     public static int gridWidth = 10;
     public static int gridHeight = 20;
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
-
+    public int score;
+    public TextMeshProUGUI scoreText;
     void Start()
     {
         SpawnTet();
+    }
+
+    [ContextMenu("Increase Score")]
+    public void AddScore(int scoreAdd)
+    {
+        score += scoreAdd;
+        scoreText.text = score.ToString();
     }
 
     public void updateGrid(TetroScript tetroScript)
@@ -111,13 +120,14 @@ public class GameScript : MonoBehaviour
                 EraseRow(y);
                 AllRowDown(y + 1);
                 y--;
+                AddScore(100);
             }
         }
     }
 
     string RandomTetroName()
     {
-        int randomIndex = UnityEngine.Random.Range(1, 10);
+        int randomIndex = UnityEngine.Random.Range(1, 8); //the usual one
         string RandomTetroFilename = "J";
         switch (randomIndex)
         {
@@ -129,7 +139,7 @@ public class GameScript : MonoBehaviour
                 break;
             case 3:
                 RandomTetroFilename = "Long";
-                return RandomTetroFilename;
+                break;
             case 4:
                 RandomTetroFilename = "S";
                 break;
