@@ -15,10 +15,7 @@ public class GameScript : MonoBehaviour
         SpawnTet();
     }
 
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     public void updateGrid(TetroScript tetroScript)
     {
@@ -55,10 +52,11 @@ public class GameScript : MonoBehaviour
             return grid[x, y];
         }
     }
+
     public void SpawnTet()
     {
         Vector3 spawnPosition = new Vector3(5f, 20f, 1f); //not using Vector2 anymore
-        Quaternion spawnRotation = Quaternion.identity; //for No Rotation 
+        Quaternion spawnRotation = Quaternion.identity; //for No Rotation
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
 
         GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
@@ -99,7 +97,6 @@ public class GameScript : MonoBehaviour
                 break;
         }
         return RandomTetroFilename;
-
     }
 
     public bool CheckInsideStage(Vector2 pos)

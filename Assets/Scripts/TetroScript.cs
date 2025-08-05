@@ -11,7 +11,6 @@ public class TetroScript : MonoBehaviour
     public bool Rotatable = true;
     public bool LimitedRotate = false;
 
-
     void Start()
     {
         GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
@@ -79,7 +78,6 @@ public class TetroScript : MonoBehaviour
                     {
                         transform.Rotate(0, 0, 90);
                     }
-
                 }
                 else
                 {
@@ -101,7 +99,6 @@ public class TetroScript : MonoBehaviour
                         {
                             transform.Rotate(0, 0, 90);
                         }
-
                     }
                     else
                     {
@@ -129,12 +126,14 @@ public class TetroScript : MonoBehaviour
                 return false;
             }
             //If the grid already has a block (mino) at that position && if that block is not part of this same tetromino:
-            if (GScript.GetTransformAtGridPos(pos) != null && GScript.GetTransformAtGridPos(pos).parent != transform)
+            if (
+                GScript.GetTransformAtGridPos(pos) != null
+                && GScript.GetTransformAtGridPos(pos).parent != transform
+            )
             {
                 return false;
             }
         }
         return true;
     }
-
 }
