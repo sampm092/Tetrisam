@@ -59,6 +59,7 @@ public class TetroScript : MonoBehaviour
             else
             {
                 transform.position += new Vector3(0, 1, 0);
+                GScript.RemoveRow();
                 enabled = false;
                 GScript.SpawnTet();
             }

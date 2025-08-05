@@ -15,8 +15,6 @@ public class GameScript : MonoBehaviour
         SpawnTet();
     }
 
-    void Update() { }
-
     public void updateGrid(TetroScript tetroScript)
     {
         for (int y = 0; y < gridHeight; ++y)
@@ -60,6 +58,61 @@ public class GameScript : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
 
         GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
+    }
+
+    public bool isRowFull(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            if (grid[x, y] == null) //check every x position in y, if theres null, return false
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void EraseRow(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            Destroy(grid[x, y].gameObject);
+            grid[x, y] = null;
+        }
+    }
+
+    public void RowDownAftErased(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            if (grid[x, y] != null)
+            {
+                grid[x, y - 1] = grid[x, y];
+                grid[x, y] = null;
+                grid[x, y - 1].position += new Vector3(0, -1, 0);
+            }
+        }
+    }
+
+    public void AllRowDown(int y)
+    {
+        for (int i = y; i < gridHeight; i++)
+        {
+            RowDownAftErased(i);
+        }
+    }
+
+    public void RemoveRow()
+    {
+        for (int y = 0; y < gridHeight; y++)
+        {
+            if (isRowFull(y))
+            {
+                EraseRow(y);
+                AllRowDown(y + 1);
+                y--;
+            }
+        }
     }
 
     string RandomTetroName()
