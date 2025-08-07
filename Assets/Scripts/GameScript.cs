@@ -146,6 +146,11 @@ public class GameScript : MonoBehaviour
         }
     }
 
+    public void RetryGame()
+    {
+        SceneManager.LoadScene("Level");
+    }
+
     public Vector2 Round(Vector2 pos) //get mino [x,y] position and round it
     {
         return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)); //make sure its a round number
