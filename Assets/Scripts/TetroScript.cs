@@ -7,7 +7,7 @@ public class TetroScript : MonoBehaviour
     // Start is called before the first frame update
     float fall = 0;
     public GameScript GScript;
-    public float fallSpeed = 1;
+    public float fallSpeed = 0.5f;
     public bool Rotatable = true;
     public bool LimitedRotate = false;
 

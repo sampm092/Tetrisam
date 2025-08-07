@@ -13,6 +13,7 @@ public class GameScript : MonoBehaviour
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
     public int score;
     public TextMeshProUGUI scoreText;
+    private int RowErased = 0;
 
     void Start()
     {
@@ -20,10 +21,29 @@ public class GameScript : MonoBehaviour
     }
 
     [ContextMenu("Increase Score")]
-    public void AddScore(int scoreAdd)
+    public void AddScore()
     {
-        score += scoreAdd;
-        scoreText.text = score.ToString();
+        if (RowErased == 1)
+        {
+            score += 100;
+            scoreText.text = score.ToString();
+        }
+        else if (RowErased == 2)
+        {
+            score += 300;
+            scoreText.text = score.ToString();
+        }
+        else if (RowErased == 3)
+        {
+            score += 600;
+            scoreText.text = score.ToString();
+        }
+        else if (RowErased == 4)
+        {
+            score += 1000;
+            scoreText.text = score.ToString();
+        }
+        RowErased = 0;
     }
 
     public bool AboveGrid(TetroScript tetro)
@@ -92,6 +112,7 @@ public class GameScript : MonoBehaviour
                 return false;
             }
         }
+        // RowErased++;
         return true;
     }
 
@@ -141,8 +162,13 @@ public class GameScript : MonoBehaviour
                 EraseRow(y);
                 AllRowDown(y + 1);
                 y--;
-                AddScore(100);
+                RowErased++;
+                // AddScore();
             }
+        }
+        if (RowErased > 0)
+        {
+            AddScore();
         }
     }
 
