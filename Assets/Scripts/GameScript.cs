@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameScript : MonoBehaviour
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
     public int score;
     public TextMeshProUGUI scoreText;
+
     void Start()
     {
         SpawnTet();
@@ -22,6 +24,27 @@ public class GameScript : MonoBehaviour
     {
         score += scoreAdd;
         scoreText.text = score.ToString();
+    }
+
+    public bool AboveGrid(TetroScript tetro)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            foreach (Transform mino in tetro.transform)
+            {
+                Vector2 pos = Round(mino.position);
+                if (pos.y > gridHeight - 1)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     public void updateGrid(TetroScript tetroScript)
@@ -62,7 +85,7 @@ public class GameScript : MonoBehaviour
 
     public void SpawnTet()
     {
-        Vector3 spawnPosition = new Vector3(5f, 20f, 1f); //not using Vector2 anymore
+        Vector3 spawnPosition = new Vector3(5f, 22f, 1f); //not using Vector2 anymore
         Quaternion spawnRotation = Quaternion.identity; //for No Rotation
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
 

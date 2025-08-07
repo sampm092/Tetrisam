@@ -60,6 +60,10 @@ public class TetroScript : MonoBehaviour
             {
                 transform.position += new Vector3(0, 1, 0);
                 GScript.RemoveRow();
+                if (GScript.AboveGrid(this))
+                {
+                    GScript.GameOver();
+                }
                 enabled = false;
                 GScript.SpawnTet();
             }
