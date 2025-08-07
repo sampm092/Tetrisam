@@ -33,7 +33,7 @@ public class GameScript : MonoBehaviour
             foreach (Transform mino in tetro.transform)
             {
                 Vector2 pos = Round(mino.position);
-                if (pos.y > gridHeight - 1)
+                if (pos.y > gridHeight - 1) //checking if the object already oustide (y) the stage
                 {
                     return true;
                 }
@@ -42,31 +42,31 @@ public class GameScript : MonoBehaviour
         return false;
     }
 
+    public void AllRowDown(int y)
+    {
+        for (int i = y; i < gridHeight; i++)
+        {
+            RowDownAftErased(i);
+        }
+    }
+
+    public bool CheckInsideStage(Vector2 pos)
+    {
+        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
+    }
+
+    public void EraseRow(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            Destroy(grid[x, y].gameObject);
+            grid[x, y] = null;
+        }
+    }
+
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
-    }
-
-    public void updateGrid(TetroScript tetroScript)
-    {
-        for (int y = 0; y < gridHeight; ++y)
-        {
-            for (int x = 0; x < gridWidth; ++x)
-            {
-                if (grid[x, y] != null && grid[x, y].parent == tetroScript.transform) //each = block, parent = prefab
-                {
-                    grid[x, y] = null; // making sure the old position cleared so theres no collision or any trace
-                }
-            }
-        }
-        foreach (Transform mino in tetroScript.transform)
-        {
-            Vector2 pos = Round(mino.position);
-            if (pos.y < gridHeight)
-            {
-                grid[(int)pos.x, (int)pos.y] = mino; //make sure that position already occupied
-            }
-        }
     }
 
     public Transform GetTransformAtGridPos(Vector2 pos)
@@ -83,15 +83,6 @@ public class GameScript : MonoBehaviour
         }
     }
 
-    public void SpawnTet()
-    {
-        Vector3 spawnPosition = new Vector3(5f, 22f, 1f); //not using Vector2 anymore
-        Quaternion spawnRotation = Quaternion.identity; //for No Rotation
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
-
-        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
-    }
-
     public bool isRowFull(int y)
     {
         for (int x = 0; x < gridWidth; x++)
@@ -102,50 +93,6 @@ public class GameScript : MonoBehaviour
             }
         }
         return true;
-    }
-
-    public void EraseRow(int y)
-    {
-        for (int x = 0; x < gridWidth; x++)
-        {
-            Destroy(grid[x, y].gameObject);
-            grid[x, y] = null;
-        }
-    }
-
-    public void RowDownAftErased(int y)
-    {
-        for (int x = 0; x < gridWidth; x++)
-        {
-            if (grid[x, y] != null)
-            {
-                grid[x, y - 1] = grid[x, y];
-                grid[x, y] = null;
-                grid[x, y - 1].position += new Vector3(0, -1, 0);
-            }
-        }
-    }
-
-    public void AllRowDown(int y)
-    {
-        for (int i = y; i < gridHeight; i++)
-        {
-            RowDownAftErased(i);
-        }
-    }
-
-    public void RemoveRow()
-    {
-        for (int y = 0; y < gridHeight; y++)
-        {
-            if (isRowFull(y))
-            {
-                EraseRow(y);
-                AllRowDown(y + 1);
-                y--;
-                AddScore(100);
-            }
-        }
     }
 
     string RandomTetroName()
@@ -185,13 +132,66 @@ public class GameScript : MonoBehaviour
         return RandomTetroFilename;
     }
 
-    public bool CheckInsideStage(Vector2 pos)
+    public void RemoveRow()
     {
-        return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
+        for (int y = 0; y < gridHeight; y++)
+        {
+            if (isRowFull(y))
+            {
+                EraseRow(y);
+                AllRowDown(y + 1);
+                y--;
+                AddScore(100);
+            }
+        }
     }
 
     public Vector2 Round(Vector2 pos) //get mino [x,y] position and round it
     {
         return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)); //make sure its a round number
+    }
+
+    public void RowDownAftErased(int y)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            if (grid[x, y] != null)
+            {
+                grid[x, y - 1] = grid[x, y];
+                grid[x, y] = null;
+                grid[x, y - 1].position += new Vector3(0, -1, 0);
+            }
+        }
+    }
+
+    public void SpawnTet()
+    {
+        Vector3 spawnPosition = new Vector3(5f, 22f, 1f); //not using Vector2 anymore
+        Quaternion spawnRotation = Quaternion.identity; //for No Rotation
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
+
+        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
+    }
+
+    public void updateGrid(TetroScript tetroScript)
+    {
+        for (int y = 0; y < gridHeight; ++y)
+        {
+            for (int x = 0; x < gridWidth; ++x)
+            {
+                if (grid[x, y] != null && grid[x, y].parent == tetroScript.transform) //each = block, parent = prefab
+                {
+                    grid[x, y] = null; // making sure the old position cleared so theres no collision or any trace
+                }
+            }
+        }
+        foreach (Transform mino in tetroScript.transform)
+        {
+            Vector2 pos = Round(mino.position);
+            if (pos.y < gridHeight)
+            {
+                grid[(int)pos.x, (int)pos.y] = mino; //make sure that position already occupied
+            }
+        }
     }
 }
