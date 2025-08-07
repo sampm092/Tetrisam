@@ -23,26 +23,23 @@ public class GameScript : MonoBehaviour
     [ContextMenu("Increase Score")]
     public void AddScore()
     {
-        if (RowErased == 1)
+        switch (RowErased)
         {
-            score += 100;
-            scoreText.text = score.ToString();
+            case 1:
+                score += 100;
+                break;
+            case 2:
+                score += 300;
+                break;
+            case 3:
+                score += 600;
+                break;
+            case 4:
+                score += 1000;
+                break;
         }
-        else if (RowErased == 2)
-        {
-            score += 300;
-            scoreText.text = score.ToString();
-        }
-        else if (RowErased == 3)
-        {
-            score += 600;
-            scoreText.text = score.ToString();
-        }
-        else if (RowErased == 4)
-        {
-            score += 1000;
-            scoreText.text = score.ToString();
-        }
+
+        scoreText.text = score.ToString();
         RowErased = 0;
     }
 
@@ -119,7 +116,7 @@ public class GameScript : MonoBehaviour
     string RandomTetroName()
     {
         int randomIndex = UnityEngine.Random.Range(1, 8); //the usual one
-        string RandomTetroFilename = "J";
+        string RandomTetroFilename = "";
         switch (randomIndex)
         {
             case 1:
