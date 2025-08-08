@@ -14,6 +14,7 @@ public class GameScript : MonoBehaviour
     public int score;
     public TextMeshProUGUI scoreText;
     private int RowErased = 0;
+    int randomIndex;
 
     void Start()
     {
@@ -39,6 +40,13 @@ public class GameScript : MonoBehaviour
                 break;
         }
 
+        scoreText.text = score.ToString();
+        RowErased = 0;
+    }
+
+    public void AddScoreDrop(int x)
+    {
+        score += x;
         scoreText.text = score.ToString();
         RowErased = 0;
     }
@@ -115,7 +123,18 @@ public class GameScript : MonoBehaviour
 
     string RandomTetroName()
     {
-        int randomIndex = UnityEngine.Random.Range(1, 8); //the usual one
+        if (score <= 5000)
+        {
+            randomIndex = UnityEngine.Random.Range(1, 8); //the usual one
+        }
+        else if (score > 5000)
+        {
+            randomIndex = UnityEngine.Random.Range(1, 9); //the usual one
+        }
+        else if (score > 7500)
+        {
+            randomIndex = UnityEngine.Random.Range(1, 10); //the usual one
+        }
         string RandomTetroFilename = "";
         switch (randomIndex)
         {
@@ -141,10 +160,10 @@ public class GameScript : MonoBehaviour
                 RandomTetroFilename = "T";
                 break;
             case 8:
-                RandomTetroFilename = "Cross";
+                RandomTetroFilename = "U";
                 break;
             case 9:
-                RandomTetroFilename = "U";
+                RandomTetroFilename = "Cross";
                 break;
         }
         return RandomTetroFilename;
