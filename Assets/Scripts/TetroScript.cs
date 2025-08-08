@@ -10,6 +10,10 @@ public class TetroScript : MonoBehaviour
     public float fallSpeed = 0.5f;
     public bool Rotatable = true;
     public bool LimitedRotate = false;
+    private float verticalSpeed = 0.05f;
+    private float verticalTimer = 0;
+    private float horizontalSpeed = 0.1f;
+    private float horizontalTimer = 0;
 
     void Start()
     {
@@ -24,9 +28,15 @@ public class TetroScript : MonoBehaviour
 
     void CheckUserInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        //  HORIZONTAL MOVEMENT
+        if (Input.GetKey(KeyCode.RightArrow)) //GetKey for continuous movement
         {
-            transform.position += new Vector3(1, 0, 0);
+            horizontalTimer += Time.deltaTime;
+            if (horizontalTimer >= horizontalSpeed)
+            {
+                horizontalTimer = 0;
+                transform.position += new Vector3(1, 0, 0);
+            }
             if (CheckValidPosition())
             {
                 GScript.updateGrid(this);
@@ -36,9 +46,14 @@ public class TetroScript : MonoBehaviour
                 transform.position += new Vector3(-1, 0, 0);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += new Vector3(-1, 0, 0);
+            horizontalTimer += Time.deltaTime;
+            if (horizontalTimer >= horizontalSpeed)
+            {
+                horizontalTimer = 0;
+                transform.position += new Vector3(-1, 0, 0);
+            }
             if (CheckValidPosition())
             {
                 GScript.updateGrid(this);
@@ -48,9 +63,20 @@ public class TetroScript : MonoBehaviour
                 transform.position += new Vector3(1, 0, 0);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Time.time - fall >= fallSpeed) //This logic makes the object fall 1 block every fallSpeed seconds (not falling like flappybird)
+        else
         {
-            transform.position += new Vector3(0, -1, 0);
+            horizontalTimer = horizontalSpeed; // allow instant move if pressed again
+        }
+
+        //  VERTICAL MOVEMENT
+        if (Input.GetKey(KeyCode.DownArrow) || Time.time - fall >= fallSpeed) //This logic makes the object fall 1 block every fallSpeed seconds (not falling like flappybird)
+        {
+            verticalTimer += Time.deltaTime;
+            if (verticalTimer >= verticalSpeed)
+            {
+                verticalTimer = 0;
+                transform.position += new Vector3(0, -1, 0);
+            }
 
             if (CheckValidPosition())
             {
@@ -69,7 +95,13 @@ public class TetroScript : MonoBehaviour
             }
             fall = Time.time;
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else
+        {
+            verticalTimer = verticalSpeed; // reset to allow instant down again
+        }
+
+        //  ROTATION
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (Rotatable) // make sure the object can be rotated or not
             {
