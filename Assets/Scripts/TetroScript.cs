@@ -95,6 +95,26 @@ public class TetroScript : MonoBehaviour
             }
             fall = Time.time;
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            while (true)
+            {
+                // Move down
+                transform.position += Vector3.down;
+
+                // If position is invalid (hit block or bottom)
+                if (CheckValidPosition())
+                {
+                    GScript.updateGrid(this); //this = current tetromino
+                }
+                else
+                {
+                    // Move back up
+                    transform.position += Vector3.up;
+                    break; // Exit loop
+                }
+            }
+        }
         else
         {
             verticalTimer = verticalSpeed; // reset to allow instant down again
