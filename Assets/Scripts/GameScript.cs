@@ -15,6 +15,11 @@ public class GameScript : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private int RowErased = 0;
     int randomIndex;
+    private AudioSource Sonsistem;
+    public AudioClip OneRow;
+    public AudioClip TwoRow;
+    public AudioClip ThreeRow;
+    public AudioClip FourRow;
 
     void Start()
     {
@@ -24,19 +29,39 @@ public class GameScript : MonoBehaviour
     [ContextMenu("Increase Score")]
     public void AddScore()
     {
+        Sonsistem = FindObjectOfType<AudioSource>();
         switch (RowErased)
         {
             case 1:
                 score += 100;
+                if (Sonsistem != null && OneRow != null)
+                {
+                    Sonsistem.PlayOneShot(OneRow);
+                }
                 break;
             case 2:
                 score += 300;
+
+                if (Sonsistem != null && TwoRow != null)
+                {
+                    Sonsistem.PlayOneShot(TwoRow);
+                }
                 break;
             case 3:
                 score += 600;
+
+                if (Sonsistem != null && ThreeRow != null)
+                {
+                    Sonsistem.PlayOneShot(ThreeRow);
+                }
                 break;
             case 4:
                 score += 1000;
+
+                if (Sonsistem != null && FourRow != null)
+                {
+                    Sonsistem.PlayOneShot(FourRow);
+                }
                 break;
         }
 
@@ -123,18 +148,14 @@ public class GameScript : MonoBehaviour
 
     string RandomTetroName()
     {
-        if (score <= 5000)
-        {
-            randomIndex = UnityEngine.Random.Range(1, 8); //the usual one
-        }
-        else if (score > 5000)
-        {
-            randomIndex = UnityEngine.Random.Range(1, 9); //the usual one
-        }
-        else if (score > 7500)
-        {
-            randomIndex = UnityEngine.Random.Range(1, 10); //the usual one
-        }
+        int maxRange = 8; //usual blocks
+
+        if (score > 12000) maxRange = 14; //harder stage
+        else if (score > 9000) maxRange = 13;
+        else if (score > 7500) maxRange = 11;
+        else if (score > 5000) maxRange = 10;
+
+        randomIndex = UnityEngine.Random.Range(1, maxRange);
         string RandomTetroFilename = "";
         switch (randomIndex)
         {
@@ -160,9 +181,21 @@ public class GameScript : MonoBehaviour
                 RandomTetroFilename = "T";
                 break;
             case 8:
-                RandomTetroFilename = "U";
+                RandomTetroFilename = "ThreeL";
                 break;
             case 9:
+                RandomTetroFilename = "Elbow";
+                break;
+            case 10:
+                RandomTetroFilename = "TwoL";
+                break;
+            case 11:
+                RandomTetroFilename = "U";
+                break;
+            case 12:
+                RandomTetroFilename = "Dot";
+                break;
+            case 13:
                 RandomTetroFilename = "Cross";
                 break;
         }
