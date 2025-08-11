@@ -437,7 +437,8 @@ MonoBehaviour:
   TwoRow: {fileID: 8300000, guid: 103196dd1670b204aae89c8eb93cd593, type: 3}
   ThreeRow: {fileID: 8300000, guid: 2bde442a761f9b04b98d8a3f95a78f86, type: 3}
   FourRow: {fileID: 8300000, guid: abe6a3692434ebc409c9e33aec3d830b, type: 3}
-  Drop: {fileID: 0}
+  Drop: {fileID: 8300000, guid: d946bfebe5734f5479d59735c4e11146, type: 3}
+  GameOverSound: {fileID: 8300000, guid: 0e0a14ebaedeafe4a8e9cb8c82407b0a, type: 3}
 --- !u!4 &885815338
 Transform:
   m_ObjectHideFlags: 0

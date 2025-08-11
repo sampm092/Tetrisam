@@ -21,6 +21,7 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
+    public AudioClip GameOverSound;
 
     void Start()
     {
@@ -226,11 +227,6 @@ public class GameScript : MonoBehaviour
         }
     }
 
-    public void RetryGame()
-    {
-        SceneManager.LoadScene("Level");
-    }
-
     public Vector2 Round(Vector2 pos) //get mino [x,y] position and round it
     {
         return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y)); //make sure its a round number
@@ -251,6 +247,11 @@ public class GameScript : MonoBehaviour
 
     public void SpawnTet()
     {
+        Sonsistem = FindObjectOfType<AudioSource>();
+        if (Sonsistem != null && Drop != null)
+        {
+            Sonsistem.PlayOneShot(Drop);
+        }
         Vector3 spawnPosition = new Vector3(5f, 22f, 1f); //not using Vector2 anymore
         Quaternion spawnRotation = Quaternion.identity; //for No Rotation
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
