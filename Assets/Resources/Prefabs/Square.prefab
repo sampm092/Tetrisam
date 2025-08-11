@@ -304,6 +304,8 @@ MonoBehaviour:
   fallSpeed: 1
   Rotatable: 0
   LimitedRotate: 0
+  Rotate: {fileID: 8300000, guid: 6b9b1478a011d324c9558edb0741e1c3, type: 3}
+  HorizontalMoveS: {fileID: 8300000, guid: b504735de94066544b14a3ca0600a9b4, type: 3}
 --- !u!1 &8251328086744658058
 GameObject:
   m_ObjectHideFlags: 0

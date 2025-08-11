@@ -149,7 +149,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d520a166ee5e3f14cb91d0d859fff1c2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -157,7 +157,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 111
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -242,8 +242,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237624185}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5864236, y: -1.7943052, z: -0.0016633313}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5864236, y: -1.7943048, z: -0.001663331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -437,6 +437,7 @@ MonoBehaviour:
   TwoRow: {fileID: 8300000, guid: 103196dd1670b204aae89c8eb93cd593, type: 3}
   ThreeRow: {fileID: 8300000, guid: 2bde442a761f9b04b98d8a3f95a78f86, type: 3}
   FourRow: {fileID: 8300000, guid: abe6a3692434ebc409c9e33aec3d830b, type: 3}
+  Drop: {fileID: 0}
 --- !u!4 &885815338
 Transform:
   m_ObjectHideFlags: 0

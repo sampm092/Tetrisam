@@ -20,6 +20,7 @@ public class GameScript : MonoBehaviour
     public AudioClip TwoRow;
     public AudioClip ThreeRow;
     public AudioClip FourRow;
+    public AudioClip Drop;
 
     void Start()
     {
@@ -73,6 +74,10 @@ public class GameScript : MonoBehaviour
     {
         score += x;
         scoreText.text = score.ToString();
+        if (Sonsistem != null && Drop != null)
+        {
+            Sonsistem.PlayOneShot(Drop);
+        }
         RowErased = 0;
     }
 

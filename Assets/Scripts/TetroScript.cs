@@ -14,6 +14,9 @@ public class TetroScript : MonoBehaviour
     private float verticalTimer = 0;
     private float horizontalSpeed = 0.1f;
     private float horizontalTimer = 0;
+    private AudioSource SonSistem2;
+    public AudioClip Rotate;
+    public AudioClip HorizontalMoveS;
 
     void Start()
     {
@@ -26,8 +29,21 @@ public class TetroScript : MonoBehaviour
         CheckUserInput();
     }
 
+    void HorizontalMove()
+    {
+        if (SonSistem2 != null && HorizontalMoveS != null)
+        {
+            SonSistem2.PlayOneShot(HorizontalMoveS);
+        }
+        else
+        {
+            Debug.LogError("Sound not found in scene!");
+        }
+    }
+
     void CheckUserInput()
     {
+        SonSistem2 = FindObjectOfType<AudioSource>();
         //  HORIZONTAL MOVEMENT
         if (Input.GetKey(KeyCode.RightArrow)) //GetKey for continuous movement
         {
@@ -36,6 +52,7 @@ public class TetroScript : MonoBehaviour
             {
                 horizontalTimer = 0;
                 transform.position += new Vector3(1, 0, 0);
+                HorizontalMove();
             }
             if (CheckValidPosition())
             {
@@ -53,6 +70,7 @@ public class TetroScript : MonoBehaviour
             {
                 horizontalTimer = 0;
                 transform.position += new Vector3(-1, 0, 0);
+                HorizontalMove();
             }
             if (CheckValidPosition())
             {
@@ -162,6 +180,10 @@ public class TetroScript : MonoBehaviour
                     {
                         transform.Rotate(0, 0, -90);
                     }
+                }
+                if (SonSistem2 != null && Rotate != null)
+                {
+                    SonSistem2.PlayOneShot(Rotate);
                 }
             }
         }
