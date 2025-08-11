@@ -15,7 +15,7 @@ public class randomscript : MonoBehaviour
 
     void Update()
     {
-        // Move the objects
+        // Move the object
         MyRigid.transform.position += Vector3.right * scrollSpeed1 * Time.deltaTime;
 
         // Update timer
@@ -25,10 +25,35 @@ public class randomscript : MonoBehaviour
             RandomizeSpeeds();
             timer = 0f;
         }
+
+        // If Sommth() is true, stop movement
+        if (Sommth())
+        {
+            scrollSpeed1 = 0;
+        }
     }
 
     void RandomizeSpeeds()
     {
         scrollSpeed1 = Random.Range(0.5f, 3f);
+    }
+
+    bool Sommth()
+    {
+        foreach (Transform mino in transform) // check every block in tetromino
+        {
+            Vector2 pos = mino.position;
+
+            if (CheckInsideStage(pos)) // check if it's inside the stage grid
+            {
+                return true;
+            }
+        }
+        return false; // default if nothing matched
+    }
+
+    public bool CheckInsideStage(Vector2 pos)
+    {
+        return ((int)pos.x == 8); // example: inside stage if x = 8
     }
 }
