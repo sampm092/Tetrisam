@@ -11,7 +11,7 @@ public class GOScript : MonoBehaviour
     }
 
     public void ExitGame()
-     {
+    {
         Application.Quit();
         Debug.Log("Game Quit"); // Only shows in editor
     }

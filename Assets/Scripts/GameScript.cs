@@ -21,7 +21,6 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
-    public AudioClip GameOverSound;
 
     void Start()
     {
@@ -156,10 +155,14 @@ public class GameScript : MonoBehaviour
     {
         int maxRange = 8; //usual blocks
 
-        if (score > 12000) maxRange = 14; //harder stage
-        else if (score > 9000) maxRange = 13;
-        else if (score > 7500) maxRange = 11;
-        else if (score > 5000) maxRange = 10;
+        if (score > 12000)
+            maxRange = 14; //harder stage
+        else if (score > 9000)
+            maxRange = 13;
+        else if (score > 7500)
+            maxRange = 11;
+        else if (score > 5000)
+            maxRange = 10;
 
         randomIndex = UnityEngine.Random.Range(1, maxRange);
         string RandomTetroFilename = "";
