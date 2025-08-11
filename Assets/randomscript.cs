@@ -5,7 +5,8 @@ using UnityEngine;
 public class randomscript : MonoBehaviour
 {
     public Rigidbody2D MyRigid;
-    public float scrollSpeed = 0.5f; // fot background speed
+    public float scrollSpeed1;
+    public float scrollSpeed2;
     public float resetPositionX = -8; // Where to reset the tile
     public float startPositionX = 5; // Where to move it back to
     private float BgWidth;
@@ -13,15 +14,11 @@ public class randomscript : MonoBehaviour
 
     void Start()
     {
-
+        scrollSpeed1 = Random.Range(0.5f, 3f);
+        scrollSpeed2 = Random.Range(0.5f, 3f);
     }
     void Update()
     {
-        MyRigid.transform.position += Vector3.right * scrollSpeed * Time.deltaTime;
-
-        // if (MyRigid.transform.position.x <= resetPositionX)
-        // {
-        //     MyRigid.transform.position = new Vector3(startPositionX, MyRigid.transform.position.y, MyRigid.transform.position.z); // resetting background t
-        // }
+        MyRigid.transform.position += Vector3.right * scrollSpeed1 * Time.deltaTime;
     }
 }
