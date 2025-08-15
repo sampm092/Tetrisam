@@ -23,7 +23,7 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
-    public float fallSpeed = 1.0f; //bug, fall speed for the first spawn is too fast    
+    public float fallSpeed = 1.0f; 
     private GameObject previewMino;
     private GameObject spawnTetrisam;
     private bool gamestarted = false;
@@ -31,6 +31,7 @@ public class GameScript : MonoBehaviour
 
     void Start()
     {
+        updateSpeed();
         SpawnTet();
     }
 
