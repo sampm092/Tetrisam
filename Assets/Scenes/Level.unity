@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 885815338}
   - component: {fileID: 885815337}
   m_Layer: 0
-  m_Name: GameScript
+  m_Name: GameLogic
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
   ThreeRow: {fileID: 8300000, guid: 2bde442a761f9b04b98d8a3f95a78f86, type: 3}
   FourRow: {fileID: 8300000, guid: abe6a3692434ebc409c9e33aec3d830b, type: 3}
   Drop: {fileID: 8300000, guid: d946bfebe5734f5479d59735c4e11146, type: 3}
+  fallSpeed: 0
 --- !u!4 &885815338
 Transform:
   m_ObjectHideFlags: 0

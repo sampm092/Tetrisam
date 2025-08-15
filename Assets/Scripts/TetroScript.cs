@@ -7,7 +7,7 @@ public class TetroScript : MonoBehaviour
     // Start is called before the first frame update
     float fall = 0;
     public GameScript GScript;
-    public float fallSpeed = 0.5f;
+    private float fallSpeed;
     public bool Rotatable = true;
     public bool LimitedRotate = false;
     private float verticalSpeed = 0.05f;
@@ -21,6 +21,7 @@ public class TetroScript : MonoBehaviour
     void Start()
     {
         GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
+        fallSpeed = GameObject.Find("GameLogic").GetComponent<GameScript>().fallSpeed;
     }
 
     // Update is called once per frame

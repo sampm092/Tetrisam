@@ -12,6 +12,8 @@ public class GameScript : MonoBehaviour
     public static int gridHeight = 20;
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
     public int score;
+    public int currentLevel = 0;
+    public int numLinesCleared = 0;
     public TextMeshProUGUI scoreText;
     private int RowErased = 0;
     int randomIndex;
@@ -21,6 +23,7 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
+    public float fallSpeed = 1.0f; //bug, fall speed for the first spawn is too fast    
     private GameObject previewMino;
     private GameObject spawnTetrisam;
     private bool gamestarted = false;
@@ -31,6 +34,12 @@ public class GameScript : MonoBehaviour
         SpawnTet();
     }
 
+    void Update()
+    {
+        updateLevel();
+        updateSpeed();
+    }
+
     [ContextMenu("Increase Score")]
     public void AddScore()
     {
@@ -39,6 +48,7 @@ public class GameScript : MonoBehaviour
         {
             case 1:
                 score += 100;
+                numLinesCleared++;
                 if (Sonsistem != null && OneRow != null)
                 {
                     Sonsistem.PlayOneShot(OneRow);
@@ -46,7 +56,7 @@ public class GameScript : MonoBehaviour
                 break;
             case 2:
                 score += 300;
-
+                numLinesCleared += 2;
                 if (Sonsistem != null && TwoRow != null)
                 {
                     Sonsistem.PlayOneShot(TwoRow);
@@ -54,7 +64,7 @@ public class GameScript : MonoBehaviour
                 break;
             case 3:
                 score += 600;
-
+                numLinesCleared += 3;
                 if (Sonsistem != null && ThreeRow != null)
                 {
                     Sonsistem.PlayOneShot(ThreeRow);
@@ -62,7 +72,7 @@ public class GameScript : MonoBehaviour
                 break;
             case 4:
                 score += 1000;
-
+                numLinesCleared += 4;
                 if (Sonsistem != null && FourRow != null)
                 {
                     Sonsistem.PlayOneShot(FourRow);
@@ -194,7 +204,7 @@ public class GameScript : MonoBehaviour
                 RandomTetroFilename = "T";
                 break;
             case 8:
-                RandomTetroFilename = "ThreeL";
+                RandomTetroFilename = "U";
                 break;
             case 9:
                 RandomTetroFilename = "Elbow";
@@ -203,7 +213,7 @@ public class GameScript : MonoBehaviour
                 RandomTetroFilename = "TwoL";
                 break;
             case 11:
-                RandomTetroFilename = "U";
+                RandomTetroFilename = "ThreeL";
                 break;
             case 12:
                 RandomTetroFilename = "Dot";
@@ -299,5 +309,15 @@ public class GameScript : MonoBehaviour
                 grid[(int)pos.x, (int)pos.y] = mino; //make sure that position already occupied
             }
         }
+    }
+
+    void updateLevel()
+    {
+        currentLevel = numLinesCleared / 10;
+    }
+
+    void updateSpeed()
+    {
+        fallSpeed = 1.0f - ((float)currentLevel * 0.1f);
     }
 }
