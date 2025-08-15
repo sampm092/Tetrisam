@@ -153,7 +153,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -438,7 +438,6 @@ MonoBehaviour:
   ThreeRow: {fileID: 8300000, guid: 2bde442a761f9b04b98d8a3f95a78f86, type: 3}
   FourRow: {fileID: 8300000, guid: abe6a3692434ebc409c9e33aec3d830b, type: 3}
   Drop: {fileID: 8300000, guid: d946bfebe5734f5479d59735c4e11146, type: 3}
-  GameOverSound: {fileID: 8300000, guid: 0e0a14ebaedeafe4a8e9cb8c82407b0a, type: 3}
 --- !u!4 &885815338
 Transform:
   m_ObjectHideFlags: 0
@@ -489,7 +488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 71.4}
+  m_AnchoredPosition: {x: 150, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459731259
@@ -624,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 130}
+  m_AnchoredPosition: {x: 150, y: -41.399994}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590688708

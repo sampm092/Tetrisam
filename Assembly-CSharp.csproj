@@ -62,10 +62,10 @@
     <Analyzer Include="C:\Users\ACER\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\randomscript.cs" />
     <Compile Include="Assets\Scripts\GameScript.cs" />
     <Compile Include="Assets\Scripts\TetroScript.cs" />
     <Compile Include="Assets\Scripts\GOScript.cs" />
-    <Compile Include="Assets\randomscript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -21,6 +21,10 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
+    private GameObject previewMino;
+    private GameObject spawnTetrisam;
+    private bool gamestarted = false;
+    private Vector3 prevPlace = new Vector3(22f, 17f, 1f);
 
     void Start()
     {
@@ -258,8 +262,21 @@ public class GameScript : MonoBehaviour
         Vector3 spawnPosition = new Vector3(5f, 22f, 1f); //not using Vector2 anymore
         Quaternion spawnRotation = Quaternion.identity; //for No Rotation
         GameObject prefab = Resources.Load<GameObject>("Prefabs/" + RandomTetroName()); //taking random prefab from Resources folder
-
-        GameObject spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
+        if (!gamestarted)
+        {
+            gamestarted = true;
+            spawnTetrisam = Instantiate(prefab, spawnPosition, spawnRotation); //Instantiate the random prefab
+            previewMino = Instantiate(prefab, prevPlace, spawnRotation);
+            previewMino.GetComponent<TetroScript>().enabled = false;
+        }
+        else
+        {
+            previewMino.transform.localPosition = spawnPosition;
+            spawnTetrisam = previewMino;
+            spawnTetrisam.GetComponent<TetroScript>().enabled = true;
+            previewMino = Instantiate(prefab, prevPlace, spawnRotation);
+            previewMino.GetComponent<TetroScript>().enabled = false;
+        }
     }
 
     public void updateGrid(TetroScript tetroScript)
