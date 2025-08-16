@@ -15,6 +15,7 @@ public class GameScript : MonoBehaviour
     public int currentLevel = 0;
     public int numLinesCleared = 0;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI levelText;
     private int RowErased = 0;
     int randomIndex;
     private AudioSource Sonsistem;
@@ -27,7 +28,7 @@ public class GameScript : MonoBehaviour
     private GameObject previewMino;
     private GameObject spawnTetrisam;
     private bool gamestarted = false;
-    private Vector3 prevPlace = new Vector3(21f, 15f, 1f);
+    private Vector3 prevPlace = new Vector3(22f, 15f, 1f);
 
     void Start()
     {
@@ -315,6 +316,7 @@ public class GameScript : MonoBehaviour
     void updateLevel()
     {
         currentLevel = numLinesCleared / 10;
+        levelText.text = currentLevel.ToString();
     }
 
     void updateSpeed()
