@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GScript: {fileID: 0}
-  fallSpeed: 1
   Rotatable: 0
   LimitedRotate: 0
   Rotate: {fileID: 8300000, guid: 6b9b1478a011d324c9558edb0741e1c3, type: 3}

@@ -23,11 +23,11 @@ public class GameScript : MonoBehaviour
     public AudioClip ThreeRow;
     public AudioClip FourRow;
     public AudioClip Drop;
-    public float fallSpeed = 1.0f; 
+    public float fallSpeed = 1.0f;
     private GameObject previewMino;
     private GameObject spawnTetrisam;
     private bool gamestarted = false;
-    private Vector3 prevPlace = new Vector3(22f, 17f, 1f);
+    private Vector3 prevPlace = new Vector3(21f, 15f, 1f);
 
     void Start()
     {
