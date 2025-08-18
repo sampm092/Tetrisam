@@ -16,6 +16,7 @@ public class GameScript : MonoBehaviour
     public int numLinesCleared = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI levelText;
+    public float displayDuration = 0.5f; // Seconds
     private int RowErased = 0;
     int randomIndex;
     private AudioSource Sonsistem;
@@ -27,7 +28,9 @@ public class GameScript : MonoBehaviour
     public float fallSpeed = 1.0f;
     private GameObject previewMino;
     private GameObject spawnTetrisam;
+    public GameObject newTetro;
     private bool gamestarted = false;
+    private bool popupShown = false;
     private Vector3 prevPlace = new Vector3(22f, 15f, 1f);
 
     void Start()
@@ -40,6 +43,12 @@ public class GameScript : MonoBehaviour
     {
         updateLevel();
         updateSpeed();
+
+        if (score >= 5000 && !popupShown)
+        {
+            DisplayPopup();
+            popupShown = true; // prevent repeat
+        }
     }
 
     [ContextMenu("Increase Score")]
@@ -124,6 +133,21 @@ public class GameScript : MonoBehaviour
     public bool CheckInsideStage(Vector2 pos)
     {
         return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
+    }
+
+    public void DisplayPopup()
+    {
+        StopAllCoroutines(); // Prevent overlap if already running
+        StartCoroutine(DisplayActivePopup());
+    }
+
+    private System.Collections.IEnumerator DisplayActivePopup()
+    {
+        newTetro.SetActive(true);
+
+        yield return new WaitForSeconds(displayDuration);
+
+        newTetro.SetActive(false);
     }
 
     public void EraseRow(int y)
