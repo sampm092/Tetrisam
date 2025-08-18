@@ -16,7 +16,7 @@ public class GameScript : MonoBehaviour
     public int numLinesCleared = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI levelText;
-    public float displayDuration = 0.5f; // Seconds
+    public float displayDuration = 2f; // Seconds
     private int RowErased = 0;
     int randomIndex;
     private AudioSource Sonsistem;
@@ -58,7 +58,7 @@ public class GameScript : MonoBehaviour
         switch (RowErased)
         {
             case 1:
-                score = 100 + (currentLevel * 10);
+                score += 100 + (currentLevel * 10);
                 numLinesCleared++;
                 if (Sonsistem != null && OneRow != null)
                 {
@@ -66,7 +66,7 @@ public class GameScript : MonoBehaviour
                 }
                 break;
             case 2:
-                score = 300 + (currentLevel * 15);
+                score += 300 + (currentLevel * 15);
                 numLinesCleared += 2;
                 if (Sonsistem != null && TwoRow != null)
                 {
@@ -74,7 +74,7 @@ public class GameScript : MonoBehaviour
                 }
                 break;
             case 3:
-                score = 600 + (currentLevel * 25);
+                score += 600 + (currentLevel * 25);
                 numLinesCleared += 3;
                 if (Sonsistem != null && ThreeRow != null)
                 {
@@ -82,7 +82,7 @@ public class GameScript : MonoBehaviour
                 }
                 break;
             case 4:
-                score = 1000 + (currentLevel * 45);
+                score += 1000 + (currentLevel * 45);
                 numLinesCleared += 4;
                 if (Sonsistem != null && FourRow != null)
                 {
