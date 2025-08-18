@@ -110,7 +110,7 @@ public class TetroScript : MonoBehaviour
                     GScript.GameOver();
                 }
                 enabled = false;
-                GScript.AddScoreDrop(50);
+                GScript.AddScoreDrop(50 + ((GScript.currentLevel * 9) - 4));
                 GScript.SpawnTet();
             }
             fall = Time.time;
