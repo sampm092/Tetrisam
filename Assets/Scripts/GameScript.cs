@@ -29,8 +29,10 @@ public class GameScript : MonoBehaviour
     private GameObject previewMino;
     private GameObject spawnTetrisam;
     public GameObject newTetro;
+    public GameObject newTetro2;
     private bool gamestarted = false;
-    private bool popupShown = false;
+    private bool popupShown1 = false;
+    private bool popupShown2 = false;
     private Vector3 prevPlace = new Vector3(22f, 15f, 1f);
 
     void Start()
@@ -44,10 +46,15 @@ public class GameScript : MonoBehaviour
         updateLevel();
         updateSpeed();
 
-        if (score >= 5000 && !popupShown)
+        if (score >= 5000 && !popupShown1)
         {
-            DisplayPopup();
-            popupShown = true; // prevent repeat
+            DisplayPopup1();
+            popupShown1 = true; // prevent repeat
+        }
+        else if (score >= 7500 && !popupShown2)
+        {
+            DisplayPopup2();
+            popupShown2 = true; // prevent repeat
         }
     }
 
@@ -135,19 +142,25 @@ public class GameScript : MonoBehaviour
         return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
     }
 
-    public void DisplayPopup()
+    public void DisplayPopup1()
     {
         StopAllCoroutines(); // Prevent overlap if already running
-        StartCoroutine(DisplayActivePopup());
+        StartCoroutine(DisplayActivePopup(newTetro));
     }
 
-    private System.Collections.IEnumerator DisplayActivePopup()
+    public void DisplayPopup2()
     {
-        newTetro.SetActive(true);
+        StopAllCoroutines(); // Prevent overlap if already running
+        StartCoroutine(DisplayActivePopup(newTetro2));
+    }
+
+    private System.Collections.IEnumerator DisplayActivePopup(GameObject TheTetro)
+    {
+        TheTetro.SetActive(true);
 
         yield return new WaitForSeconds(displayDuration);
 
-        newTetro.SetActive(false);
+        TheTetro.SetActive(false);
     }
 
     public void EraseRow(int y)
@@ -196,13 +209,13 @@ public class GameScript : MonoBehaviour
         int maxRange = 8; //usual blocks
 
         if (score > 12000)
-            maxRange = 14; //harder stage
+            maxRange = 14; //harder stage, till 13
         else if (score > 9000)
-            maxRange = 13;
+            maxRange = 13; //till 12
         else if (score > 7500)
-            maxRange = 11;
+            maxRange = 11; // till 10
         else if (score > 5000)
-            maxRange = 10;
+            maxRange = 10; //till 9
 
         randomIndex = UnityEngine.Random.Range(1, maxRange);
         string RandomTetroFilename = "";
