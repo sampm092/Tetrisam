@@ -30,9 +30,13 @@ public class GameScript : MonoBehaviour
     private GameObject spawnTetrisam;
     public GameObject newTetro;
     public GameObject newTetro2;
+    public GameObject newTetro3;
+    public GameObject newTetro4;
     private bool gamestarted = false;
     private bool popupShown1 = false;
     private bool popupShown2 = false;
+    private bool popupShown3 = false;
+    private bool popupShown4 = false;
     private Vector3 prevPlace = new Vector3(22f, 15f, 1f);
 
     void Start()
