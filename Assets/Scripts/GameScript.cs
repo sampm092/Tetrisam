@@ -158,6 +158,18 @@ public class GameScript : MonoBehaviour
         StartCoroutine(DisplayActivePopup(newTetro2));
     }
 
+    public void DisplayPopup3()
+    {
+        StopAllCoroutines(); // Prevent overlap if already running
+        StartCoroutine(DisplayActivePopup(newTetro3));
+    }
+
+    public void DisplayPopup4()
+    {
+        StopAllCoroutines(); // Prevent overlap if already running
+        StartCoroutine(DisplayActivePopup(newTetro4));
+    }
+
     private System.Collections.IEnumerator DisplayActivePopup(GameObject TheTetro)
     {
         TheTetro.SetActive(true);
