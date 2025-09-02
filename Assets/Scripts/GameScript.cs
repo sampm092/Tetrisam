@@ -60,6 +60,16 @@ public class GameScript : MonoBehaviour
             DisplayPopup2();
             popupShown2 = true; // prevent repeat
         }
+        else if (score >= 9000 && !popupShown3)
+        {
+            DisplayPopup3();
+            popupShown3 = true; // prevent repeat
+        }
+        else if (score >= 12000 && !popupShown4)
+        {
+            DisplayPopup4();
+            popupShown4 = true; // prevent repeat
+        }
     }
 
     [ContextMenu("Increase Score")]
