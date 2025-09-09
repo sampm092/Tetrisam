@@ -38,7 +38,7 @@ public class GameScript : MonoBehaviour
     private bool popupShown2 = false;
     private bool popupShown3 = false;
     private bool popupShown4 = false;
-    private Vector3 prevPlace = new Vector3(22f, 15f, 1f);
+    private Vector3 prevPlace = new Vector3(15f, 15f, 1f);
 
     void Start()
     {
