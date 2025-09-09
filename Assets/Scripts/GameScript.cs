@@ -33,6 +33,7 @@ public class GameScript : MonoBehaviour
     public GameObject newTetro2;
     public GameObject newTetro3;
     public GameObject newTetro4;
+    public bool isPaused = false;
     private bool gamestarted = false;
     private bool popupShown1 = false;
     private bool popupShown2 = false;

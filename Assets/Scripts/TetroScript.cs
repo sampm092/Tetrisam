@@ -17,7 +17,6 @@ public class TetroScript : MonoBehaviour
     private AudioSource SonSistem2;
     public AudioClip Rotate;
     public AudioClip HorizontalMoveS;
-    private bool isPaused = false;
 
     void Start()
     {
@@ -225,9 +224,9 @@ public class TetroScript : MonoBehaviour
 
     public void TogglePause()
     {
-        isPaused = !isPaused;
+        GScript.isPaused = !GScript.isPaused;
+        Time.timeScale = GScript.isPaused ? 0 : 1;
 
-        Time.timeScale = isPaused ? 0 : 1;
-        GScript.PauseMenu.SetActive(isPaused); // Enable or disable pause menu UI
+        GScript.PauseMenu.SetActive(GScript.isPaused); // Enable or disable pause menu UI
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameScript GScript;
+
     public void StartGame()
     {
         SceneManager.LoadScene("Level");
@@ -14,6 +15,14 @@ public class SceneScript : MonoBehaviour
     public void RetryGame()
     {
         SceneManager.LoadScene("Level");
+    }
+
+    public void ToMenu()
+    {
+        Time.timeScale = 1;
+        GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
+        GScript.isPaused = !GScript.isPaused;
+        SceneManager.LoadScene("Menu");
     }
 
     public void ExitGame()
