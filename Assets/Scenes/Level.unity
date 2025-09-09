@@ -1792,6 +1792,8 @@ MonoBehaviour:
   fallSpeed: 0
   newTetro: {fileID: 1487959928}
   newTetro2: {fileID: 1921143901}
+  newTetro3: {fileID: 965887300}
+  newTetro4: {fileID: 197233245}
 --- !u!4 &885815338
 Transform:
   m_ObjectHideFlags: 0
