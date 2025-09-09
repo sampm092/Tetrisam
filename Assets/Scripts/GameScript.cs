@@ -28,6 +28,7 @@ public class GameScript : MonoBehaviour
     public float fallSpeed = 1.0f;
     private GameObject previewMino;
     private GameObject spawnTetrisam;
+    public GameObject PauseMenu;
     public GameObject newTetro;
     public GameObject newTetro2;
     public GameObject newTetro3;

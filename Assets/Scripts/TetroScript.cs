@@ -17,6 +17,7 @@ public class TetroScript : MonoBehaviour
     private AudioSource SonSistem2;
     public AudioClip Rotate;
     public AudioClip HorizontalMoveS;
+    private bool isPaused = false;
 
     void Start()
     {
@@ -188,6 +189,10 @@ public class TetroScript : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) //is true
+        {
+            TogglePause();
+        }
     }
 
     bool CheckValidPosition() //checking the object is in a valid position to do a command
@@ -216,5 +221,13 @@ public class TetroScript : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        Time.timeScale = isPaused ? 0 : 1;
+        GScript.PauseMenu.SetActive(isPaused); // Enable or disable pause menu UI
     }
 }
