@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\SceneScript.cs" />
     <Compile Include="Assets\Scripts\GameScript.cs" />
     <Compile Include="Assets\Scripts\TetroScript.cs" />
+    <Compile Include="Assets\Scripts\ScoreScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
