@@ -390,14 +390,20 @@ public class GameScript : MonoBehaviour
     {
         if (score > startingHighScore)
         {
+            PlayerPrefs.SetInt("highscore4", startingHighScore3);
+            PlayerPrefs.SetInt("highscore3", startingHighScore2);
+            PlayerPrefs.SetInt("highscore2", startingHighScore);
             PlayerPrefs.SetInt("highscore", score);
         }
         else if (score > startingHighScore2)
         {
+            PlayerPrefs.SetInt("highscore4", startingHighScore3);
+            PlayerPrefs.SetInt("highscore3", startingHighScore2);
             PlayerPrefs.SetInt("highscore2", score);
         }
         else if (score > startingHighScore3)
         {
+            PlayerPrefs.SetInt("highscore4", startingHighScore3);
             PlayerPrefs.SetInt("highscore3", score);
         }
         else if (score > startingHighScore4)
