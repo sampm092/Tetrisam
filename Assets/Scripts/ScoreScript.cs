@@ -18,4 +18,10 @@ public class ScoreScript : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void resetScore()
+    {
+        PlayerPrefs.SetInt("highscore", 0);
+        scores.text = PlayerPrefs.GetInt("highscore").ToString();
+    }
 }

@@ -46,7 +46,7 @@ public class GameScript : MonoBehaviour
     {
         updateSpeed();
         SpawnTet();
-        startingHighScore = PlayerPrefs.GetInt("highscores");
+        startingHighScore = PlayerPrefs.GetInt("highscore");
     }
 
     void Update()
