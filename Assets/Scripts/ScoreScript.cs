@@ -11,7 +11,6 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
-        // PlayerPrefs.SetInt("highscores", 20000);
         scores.text = PlayerPrefs.GetInt("highscore").ToString();
     }
 
@@ -19,6 +18,4 @@ public class ScoreScript : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-
-    // Update is called once per frame
 }

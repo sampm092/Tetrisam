@@ -2773,7 +2773,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1893960893}
         m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-        m_MethodName: ToMenu
+        m_MethodName: ToMenuPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneScript : MonoBehaviour
 {
     public GameScript GScript;
-    //aaa
 
     public void StartGame()
     {
@@ -18,11 +17,16 @@ public class SceneScript : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
-    public void ToMenu()
+    public void ToMenuPause()
     {
         Time.timeScale = 1;
         GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
         GScript.isPaused = !GScript.isPaused;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ToMenu()
+    {
         SceneManager.LoadScene("Menu");
     }
 

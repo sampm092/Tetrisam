@@ -274,8 +274,8 @@ Canvas:
   m_GameObject: {fileID: 508831035}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 43966136}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -946,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69e7d36df47e634881d3cb0e152872e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GScript: {fileID: 0}
 --- !u!4 &1708742083
 Transform:
   m_ObjectHideFlags: 0
@@ -1047,7 +1048,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1708742082}
         m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-        m_MethodName: ExitGame
+        m_MethodName: ToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
