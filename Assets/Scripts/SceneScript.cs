@@ -30,4 +30,9 @@ public class SceneScript : MonoBehaviour
         Application.Quit();
         Debug.Log("Game Quit"); // Only shows in editor
     }
+
+    public void toScore()
+    {
+        SceneManager.LoadScene("Score");
+    }
 }
