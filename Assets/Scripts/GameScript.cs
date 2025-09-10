@@ -18,6 +18,7 @@ public class GameScript : MonoBehaviour
     public TextMeshProUGUI levelText;
     public float displayDuration = 2f; // Seconds
     private int RowErased = 0;
+    private int startingHighScore;
     int randomIndex;
     private AudioSource Sonsistem;
     public AudioClip OneRow;
@@ -45,6 +46,7 @@ public class GameScript : MonoBehaviour
     {
         updateSpeed();
         SpawnTet();
+        startingHighScore = PlayerPrefs.GetInt("highscores");
     }
 
     void Update()
@@ -308,6 +310,7 @@ public class GameScript : MonoBehaviour
         if (RowErased > 0)
         {
             AddScore();
+            UpdateHighscore();
         }
     }
 
@@ -375,6 +378,14 @@ public class GameScript : MonoBehaviour
             {
                 grid[(int)pos.x, (int)pos.y] = mino; //make sure that position already occupied
             }
+        }
+    }
+
+    public void UpdateHighscore()
+    {
+        if (score > startingHighScore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
         }
     }
 
