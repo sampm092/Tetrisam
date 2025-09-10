@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneScript : MonoBehaviour
 {
     public GameScript GScript;
+    //aaa
 
     public void StartGame()
     {

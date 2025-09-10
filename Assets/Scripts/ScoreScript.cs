@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class ScoreScript : MonoBehaviour
     {
         // PlayerPrefs.SetInt("highscores", 20000);
         scores.text = PlayerPrefs.GetInt("highscore").ToString();
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     // Update is called once per frame
