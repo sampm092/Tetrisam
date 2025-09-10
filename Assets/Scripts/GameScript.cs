@@ -211,7 +211,6 @@ public class GameScript : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
-        UpdateHighscore();
     }
 
     public Transform GetTransformAtGridPos(Vector2 pos)
@@ -317,7 +316,6 @@ public class GameScript : MonoBehaviour
         if (RowErased > 0)
         {
             AddScore();
-            // UpdateHighscore();
         }
     }
 
@@ -393,6 +391,18 @@ public class GameScript : MonoBehaviour
         if (score > startingHighScore)
         {
             PlayerPrefs.SetInt("highscore", score);
+        }
+        else if (score > startingHighScore2)
+        {
+            PlayerPrefs.SetInt("highscore2", score);
+        }
+        else if (score > startingHighScore3)
+        {
+            PlayerPrefs.SetInt("highscore3", score);
+        }
+        else if (score > startingHighScore4)
+        {
+            PlayerPrefs.SetInt("highscore4", score);
         }
     }
 

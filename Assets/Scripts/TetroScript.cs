@@ -107,11 +107,12 @@ public class TetroScript : MonoBehaviour
                 GScript.RemoveRow();
                 if (GScript.AboveGrid(this))
                 {
+                    GScript.UpdateHighscore();
                     GScript.GameOver();
                 }
                 enabled = false;
                 GScript.AddScoreDrop(50 + ((GScript.currentLevel * 9) - 4));
-                // GScript.UpdateHighscore();
+                GScript.UpdateHighscore();
                 GScript.SpawnTet();
             }
             fall = Time.time;
