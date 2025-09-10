@@ -8,10 +8,16 @@ public class ScoreScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI scores;
+    public TextMeshProUGUI scores2;
+    public TextMeshProUGUI scores3;
+    public TextMeshProUGUI scores4;
 
     void Start()
     {
         scores.text = PlayerPrefs.GetInt("highscore").ToString();
+        scores2.text = PlayerPrefs.GetInt("highscore2").ToString();
+        scores3.text = PlayerPrefs.GetInt("highscore3").ToString();
+        scores4.text = PlayerPrefs.GetInt("highscore4").ToString();
     }
 
     public void ToMenu()

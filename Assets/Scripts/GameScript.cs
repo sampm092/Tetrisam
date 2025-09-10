@@ -19,6 +19,9 @@ public class GameScript : MonoBehaviour
     public float displayDuration = 2f; // Seconds
     private int RowErased = 0;
     private int startingHighScore;
+    private int startingHighScore2;
+    private int startingHighScore3;
+    private int startingHighScore4;
     int randomIndex;
     private AudioSource Sonsistem;
     public AudioClip OneRow;
@@ -47,6 +50,9 @@ public class GameScript : MonoBehaviour
         updateSpeed();
         SpawnTet();
         startingHighScore = PlayerPrefs.GetInt("highscore");
+        startingHighScore2 = PlayerPrefs.GetInt("highscore2");
+        startingHighScore3 = PlayerPrefs.GetInt("highscore3");
+        startingHighScore4 = PlayerPrefs.GetInt("highscore4");
     }
 
     void Update()
@@ -205,6 +211,7 @@ public class GameScript : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
+        UpdateHighscore();
     }
 
     public Transform GetTransformAtGridPos(Vector2 pos)
@@ -310,7 +317,7 @@ public class GameScript : MonoBehaviour
         if (RowErased > 0)
         {
             AddScore();
-            UpdateHighscore();
+            // UpdateHighscore();
         }
     }
 
