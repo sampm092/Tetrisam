@@ -10,6 +10,7 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public static int gridWidth = 10;
     public static int gridHeight = 20;
+    private int[] startingHighScore = new int[4];
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
     public int score;
     public int currentLevel = 0;
@@ -18,10 +19,6 @@ public class GameScript : MonoBehaviour
     public TextMeshProUGUI levelText;
     public float displayDuration = 2f; // Seconds
     private int RowErased = 0;
-    private int startingHighScore;
-    private int startingHighScore2;
-    private int startingHighScore3;
-    private int startingHighScore4;
     int randomIndex;
     private AudioSource Sonsistem;
     public AudioClip OneRow;
@@ -49,10 +46,10 @@ public class GameScript : MonoBehaviour
     {
         updateSpeed();
         SpawnTet();
-        startingHighScore = PlayerPrefs.GetInt("highscore1");
-        startingHighScore2 = PlayerPrefs.GetInt("highscore2");
-        startingHighScore3 = PlayerPrefs.GetInt("highscore3");
-        startingHighScore4 = PlayerPrefs.GetInt("highscore4");
+        for (int i = 0; i < startingHighScore.Length; i++)
+        {
+            startingHighScore[i] = PlayerPrefs.GetInt($"highscore{i + 1}", 0); // default 0
+        }
     }
 
     void Update()
@@ -388,25 +385,25 @@ public class GameScript : MonoBehaviour
 
     public void UpdateHighscore()
     {
-        if (score > startingHighScore)
+        if (score > startingHighScore[0])
         {
-            PlayerPrefs.SetInt("highscore4", startingHighScore3);
-            PlayerPrefs.SetInt("highscore3", startingHighScore2);
-            PlayerPrefs.SetInt("highscore2", startingHighScore);
+            PlayerPrefs.SetInt("highscore4", startingHighScore[2]);
+            PlayerPrefs.SetInt("highscore3", startingHighScore[1]);
+            PlayerPrefs.SetInt("highscore2", startingHighScore[0]);
             PlayerPrefs.SetInt("highscore1", score);
         }
-        else if (score > startingHighScore2)
+        else if (score > startingHighScore[1])
         {
-            PlayerPrefs.SetInt("highscore4", startingHighScore3);
-            PlayerPrefs.SetInt("highscore3", startingHighScore2);
+            PlayerPrefs.SetInt("highscore4", startingHighScore[2]);
+            PlayerPrefs.SetInt("highscore3", startingHighScore[1]);
             PlayerPrefs.SetInt("highscore2", score);
         }
-        else if (score > startingHighScore3)
+        else if (score > startingHighScore[2])
         {
-            PlayerPrefs.SetInt("highscore4", startingHighScore3);
+            PlayerPrefs.SetInt("highscore4", startingHighScore[2]);
             PlayerPrefs.SetInt("highscore3", score);
         }
-        else if (score > startingHighScore4)
+        else if (score > startingHighScore[3])
         {
             PlayerPrefs.SetInt("highscore4", score);
         }
