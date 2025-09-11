@@ -10,7 +10,7 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public static int gridWidth = 10;
     public static int gridHeight = 20;
-    private int[] startingHighScore = new int[4];
+    private int[] startingHighScore = new int[4]; //four startingHighScore [0,1,2,3]
     public Transform[,] grid = new Transform[gridWidth, gridHeight]; //creates a 2D array of Transform which contains all coordinate from [0,1] to [9,19]
     public int score;
     public int currentLevel = 0;
@@ -289,7 +289,6 @@ public class GameScript : MonoBehaviour
                 AllRowDown(y + 1);
                 y--;
                 RowErased++;
-                // AddScore();
             }
         }
         if (RowErased > 0)
@@ -369,10 +368,11 @@ public class GameScript : MonoBehaviour
     {
         if (score > startingHighScore[0])
         {
-            PlayerPrefs.SetInt("highscore4", startingHighScore[2]);
-            PlayerPrefs.SetInt("highscore3", startingHighScore[1]);
-            PlayerPrefs.SetInt("highscore2", startingHighScore[0]);
-            PlayerPrefs.SetInt("highscore1", score);
+            //shift higher score to the next position
+            PlayerPrefs.SetInt("highscore4", startingHighScore[2]); //3 to 4
+            PlayerPrefs.SetInt("highscore3", startingHighScore[1]); //2 to 3
+            PlayerPrefs.SetInt("highscore2", startingHighScore[0]); // 1 to 2
+            PlayerPrefs.SetInt("highscore1", score); //new score
         }
         else if (score > startingHighScore[1])
         {
