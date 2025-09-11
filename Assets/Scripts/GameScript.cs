@@ -59,22 +59,22 @@ public class GameScript : MonoBehaviour
 
         if (score >= 5000 && !popupShown1)
         {
-            DisplayPopup1();
+            DisplayPopUp(newTetro);
             popupShown1 = true; // prevent repeat
         }
         else if (score >= 7500 && !popupShown2)
         {
-            DisplayPopup2();
+            DisplayPopUp(newTetro2);
             popupShown2 = true; // prevent repeat
         }
         else if (score >= 9000 && !popupShown3)
         {
-            DisplayPopup3();
+            DisplayPopUp(newTetro3);
             popupShown3 = true; // prevent repeat
         }
         else if (score >= 12000 && !popupShown4)
         {
-            DisplayPopup4();
+            DisplayPopUp(newTetro4);
             popupShown4 = true; // prevent repeat
         }
     }
@@ -163,28 +163,10 @@ public class GameScript : MonoBehaviour
         return ((int)pos.x >= 0 && (int)pos.x < gridWidth && (int)pos.y >= 1); // check if the object is inside grid/stage
     }
 
-    public void DisplayPopup1()
+    public void DisplayPopUp(GameObject popup)
     {
         StopAllCoroutines(); // Prevent overlap if already running
-        StartCoroutine(DisplayActivePopup(newTetro));
-    }
-
-    public void DisplayPopup2()
-    {
-        StopAllCoroutines(); // Prevent overlap if already running
-        StartCoroutine(DisplayActivePopup(newTetro2));
-    }
-
-    public void DisplayPopup3()
-    {
-        StopAllCoroutines(); // Prevent overlap if already running
-        StartCoroutine(DisplayActivePopup(newTetro3));
-    }
-
-    public void DisplayPopup4()
-    {
-        StopAllCoroutines(); // Prevent overlap if already running
-        StartCoroutine(DisplayActivePopup(newTetro4));
+        StartCoroutine(DisplayActivePopup(popup));
     }
 
     private System.Collections.IEnumerator DisplayActivePopup(GameObject TheTetro)
