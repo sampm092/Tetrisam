@@ -49,7 +49,7 @@ public class GameScript : MonoBehaviour
     {
         updateSpeed();
         SpawnTet();
-        startingHighScore = PlayerPrefs.GetInt("highscore");
+        startingHighScore = PlayerPrefs.GetInt("highscore1");
         startingHighScore2 = PlayerPrefs.GetInt("highscore2");
         startingHighScore3 = PlayerPrefs.GetInt("highscore3");
         startingHighScore4 = PlayerPrefs.GetInt("highscore4");
@@ -393,7 +393,7 @@ public class GameScript : MonoBehaviour
             PlayerPrefs.SetInt("highscore4", startingHighScore3);
             PlayerPrefs.SetInt("highscore3", startingHighScore2);
             PlayerPrefs.SetInt("highscore2", startingHighScore);
-            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.SetInt("highscore1", score);
         }
         else if (score > startingHighScore2)
         {
