@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class ScoreScript : MonoBehaviour
 {
     public TextMeshProUGUI[] scoreTexts; // assign in Inspector (size = 4, drag your TMP objects here) : scores, scores2-4
+    public GameObject ResetVer;
+    private bool isActive = false;
 
     void Start()
     {
@@ -22,7 +24,11 @@ public class ScoreScript : MonoBehaviour
         LoadScores();
     }
 
-    
+    public void toResetVer()
+    {
+        isActive = !isActive;
+        ResetVer.SetActive(isActive);
+    }
 
     private void LoadScores()
     {

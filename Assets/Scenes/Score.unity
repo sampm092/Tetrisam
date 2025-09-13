@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 1803815534}
   - {fileID: 941703569}
   - {fileID: 966289504}
+  ResetVer: {fileID: 0}
 --- !u!4 &111464950
 Transform:
   m_ObjectHideFlags: 0
@@ -973,7 +974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 111464949}
         m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
-        m_MethodName: resetScore
+        m_MethodName: toResetVer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
