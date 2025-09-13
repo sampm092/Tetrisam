@@ -22,6 +22,8 @@ public class ScoreScript : MonoBehaviour
         LoadScores();
     }
 
+    
+
     private void LoadScores()
     {
         for (int i = 0; i < scoreTexts.Length; i++) //scoreTexts.Length = 4
