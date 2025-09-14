@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneScript : MonoBehaviour
 {
     public GameScript GScript;
+    public AudioClip tap;
 
     public void StartGame()
     {
