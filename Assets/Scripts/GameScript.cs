@@ -44,6 +44,7 @@ public class GameScript : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1920, 1080, true); // lock to 16:9 fullscreen
         updateSpeed();
         SpawnTet();
         for (int i = 0; i < startingHighScore.Length; i++)
