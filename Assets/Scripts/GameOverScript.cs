@@ -6,19 +6,31 @@ using UnityEngine;
 public class GameOverScript : MonoBehaviour
 {
     public TextMeshProUGUI finalScore;
+    public GameObject newHigh;
     public int score;
-
-    // public GameScript GScript;
 
     void Start()
     {
+        score = PlayerPrefs.GetInt("score");
+        checkHighscore(score);
         finalScoreShow();
-        // GScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameScript>();
     }
 
     public void finalScoreShow()
     {
-        score = PlayerPrefs.GetInt("score");
         finalScore.text = score.ToString();
+    }
+
+    public void checkHighscore(int value)
+    {
+        if (
+            value > PlayerPrefs.GetInt("highscore1")
+            || value > PlayerPrefs.GetInt("highscore2")
+            || value > PlayerPrefs.GetInt("highscore3")
+            || value > PlayerPrefs.GetInt("highscore4")
+        )
+        {
+            newHigh.SetActive(true);
+        }
     }
 }
