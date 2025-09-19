@@ -35,6 +35,7 @@ public class GameScript : MonoBehaviour
     public GameObject newTetro3;
     public GameObject newTetro4;
     public bool isPaused = false;
+    public bool newHighscore;
     private bool gamestarted = false;
     private bool popupShown1 = false;
     private bool popupShown2 = false;
@@ -45,6 +46,7 @@ public class GameScript : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1920, 1080, true); // lock to 16:9 fullscreen
+        newHighscore = false;
         updateSpeed();
         SpawnTet();
         for (int i = 0; i < startingHighScore.Length; i++)
@@ -369,6 +371,7 @@ public class GameScript : MonoBehaviour
     {
         if (score > startingHighScore[0])
         {
+            newHighscore = true;
             //shift higher score to the next position
             PlayerPrefs.SetInt("highscore4", startingHighScore[2]); //3 to 4
             PlayerPrefs.SetInt("highscore3", startingHighScore[1]); //2 to 3
@@ -390,6 +393,7 @@ public class GameScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("highscore4", score);
         }
+        PlayerPrefs.SetInt("score", score);
     }
 
     void updateLevel()

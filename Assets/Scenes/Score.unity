@@ -157,7 +157,7 @@ MonoBehaviour:
   - {fileID: 941703569}
   - {fileID: 966289504}
   ResetVer: {fileID: 1310204840}
-  tap: {fileID: 0}
+  tap: {fileID: 8300000, guid: a6cafc3afe1f09f45a867b9b9580e226, type: 3}
 --- !u!4 &111464950
 Transform:
   m_ObjectHideFlags: 0
