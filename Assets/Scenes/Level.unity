@@ -3387,7 +3387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GScript: {fileID: 0}
-  tap: {fileID: 0}
+  tap: {fileID: 8300000, guid: a6cafc3afe1f09f45a867b9b9580e226, type: 3}
 --- !u!4 &1893960894
 Transform:
   m_ObjectHideFlags: 0
