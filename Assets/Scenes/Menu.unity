@@ -401,15 +401,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ae9459a1e03f4634c921a9cfcf6c826e, type: 2}
-  m_sharedMaterial: {fileID: 288453892427359764, guid: ae9459a1e03f4634c921a9cfcf6c826e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e2b168cad7a13db439dfbcd7a7df0380, type: 2}
+  m_sharedMaterial: {fileID: -4812152462169003229, guid: e2b168cad7a13db439dfbcd7a7df0380, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286414968
-  m_fontColor: {r: 0.47058827, g: 0.5019608, b: 0.4901961, a: 1}
+    rgba: 4287336327
+  m_fontColor: {r: 0.5294118, g: 0.56078434, b: 0.54509807, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
