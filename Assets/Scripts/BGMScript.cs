@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BGMScript : MonoBehaviour
 {
     private static BGMScript instance;
     private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioMixer audioMixer;
+
+    [SerializeField]
+    private Slider volumeSlider;
 
     void Awake()
     // Awake() is called before Start(), as soon as the object is created.
@@ -35,5 +43,11 @@ public class BGMScript : MonoBehaviour
             if (!audioSource.isPlaying)
                 audioSource.Play(); // resume for A & B
         }
+    }
+
+    public void setMusicVolume()
+    {
+        float volume = volumeSlider.value;
+        audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
     }
 }
