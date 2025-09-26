@@ -16,6 +16,21 @@ public class SceneScript : MonoBehaviour
     void Start()
     {
         Sonsistem = FindObjectOfType<AudioSource>();
+        if (screenSlide != null)
+        {
+            screenSlide.wholeNumbers = true;
+            screenSlide.minValue = 0;
+            screenSlide.maxValue = 1;
+
+            if (Screen.fullScreen)
+            {
+                screenSlide.value = 0; // fullscreen
+            }
+            else
+            {
+                screenSlide.value = 1; // windowed
+            }
+        }
     }
 
     public void StartGame()
@@ -41,9 +56,14 @@ public class SceneScript : MonoBehaviour
         }
         else if (sliderValue == 1)
         {
-            Screen.SetResolution(1000, 700, FullScreenMode.Windowed);
+            // Windowed (95% of full screen)
+            int width = Mathf.RoundToInt(Display.main.systemWidth * 0.95f);
+            int height = Mathf.RoundToInt(Display.main.systemHeight * 0.95f);
+
+            Screen.SetResolution(width, height, FullScreenMode.Windowed);
             Screen.fullScreen = false;
-            Debug.Log("Windowed");
+
+            Debug.Log($"Windowed at {width}x{height}");
         }
     }
 
@@ -71,6 +91,8 @@ public class SceneScript : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        Screen.fullScreen = true;
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         Debug.Log("Game Quit"); // Only shows in editor
     }
 
