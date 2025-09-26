@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneScript : MonoBehaviour
 {
     public GameScript GScript;
+    public Slider screenSlide;
     private AudioSource Sonsistem;
     public AudioClip tap;
 
@@ -24,6 +26,23 @@ public class SceneScript : MonoBehaviour
     {
         tapSound();
         SceneManager.LoadScene("Level");
+    }
+
+    public void SetScreenMode()
+    {
+        int sliderValue = Mathf.RoundToInt(screenSlide.value);
+        if (sliderValue == 0)
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            Screen.fullScreen = true;
+            Debug.Log("Fullscreen");
+        }
+        else if (sliderValue == 1)
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.fullScreen = false;
+            Debug.Log("Windowed");
+        }
     }
 
     public void ToMenuPause()
