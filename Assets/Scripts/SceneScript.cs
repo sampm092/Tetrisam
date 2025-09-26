@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class SceneScript : MonoBehaviour
 {
     public GameScript GScript;
+    public GameObject Settings;
     public Slider screenSlide;
     private AudioSource Sonsistem;
     public AudioClip tap;
+    bool status = false;
 
     void Start()
     {
@@ -39,7 +41,7 @@ public class SceneScript : MonoBehaviour
         }
         else if (sliderValue == 1)
         {
-            Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.SetResolution(1000, 700, FullScreenMode.Windowed);
             Screen.fullScreen = false;
             Debug.Log("Windowed");
         }
@@ -58,6 +60,12 @@ public class SceneScript : MonoBehaviour
     {
         tapSound();
         SceneManager.LoadScene("Menu");
+    }
+
+    public void toSettings()
+    {
+        status = !status;
+        Settings.SetActive(status);
     }
 
     public void ExitGame()
