@@ -26,7 +26,7 @@ public class BGMScript : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
         }
@@ -36,13 +36,18 @@ public class BGMScript : MonoBehaviour
     {
         if (scene.name == "Level")
         {
-            audioSource.Stop(); // no music in Scene C
+            audioSource.Stop(); // Stop in game scene
         }
-        else
+        else if (scene.name == "Menu" || scene.name == "Score")
         {
-            if (!audioSource.isPlaying)
-                audioSource.Play(); // resume for A & B
+            audioSource.Play(); // Resume in menus
         }
+    }
+
+    void OnDestroy()
+    {
+        // Prevent duplicate subscriptions
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void setMusicVolume()

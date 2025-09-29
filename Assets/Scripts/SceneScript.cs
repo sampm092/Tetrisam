@@ -84,6 +84,7 @@ public class SceneScript : MonoBehaviour
 
     public void toSettings()
     {
+        tapSound();
         status = !status;
         Settings.SetActive(status);
     }
@@ -102,7 +103,7 @@ public class SceneScript : MonoBehaviour
         SceneManager.LoadScene("Score");
     }
 
-    void tapSound()
+    public void tapSound()
     {
         if (Sonsistem != null && tap != null)
         {
