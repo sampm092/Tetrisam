@@ -9,12 +9,14 @@ public class BGMScript : MonoBehaviour
 {
     private static BGMScript instance;
     private AudioSource audioSource;
+    private AudioSource audioSourceMenu;
 
     [SerializeField]
     private AudioMixer audioMixer;
 
     [SerializeField]
     private Slider volumeSlider;
+    public bool toMenuStat = false;
 
     void Awake()
     // Awake() is called before Start(), as soon as the object is created.
@@ -24,6 +26,7 @@ public class BGMScript : MonoBehaviour
             instance = this; //assign this crip
             DontDestroyOnLoad(gameObject); // keep this across scenes even after loading other gameobjects
             audioSource = GetComponent<AudioSource>();
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else if (instance != this)
@@ -37,10 +40,14 @@ public class BGMScript : MonoBehaviour
         if (scene.name == "Level")
         {
             audioSource.Stop(); // Stop in game scene
+            toMenuStat = true;
         }
-        else if (scene.name == "Menu" || scene.name == "Score")
+        else if (scene.name == "Menu")
         {
-            audioSource.Play(); // Resume in menus
+            if (!audioSource.isPlaying) //untuk score
+                audioSource.Play(); // Resume in menus
+            if (toMenuStat == true)
+                audioSource.Play();
         }
     }
 
@@ -55,4 +62,21 @@ public class BGMScript : MonoBehaviour
         float volume = volumeSlider.value;
         audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
     }
+
+    // void musicSlidePos()
+    // {
+    //     if (volumeSlider != null)
+    //     {
+    //         // Make sure the slider starts at the current volume
+    //         volumeSlider.value = 1f; // or load from PlayerPrefs / default
+
+    //         // Subscribe to value change
+    //         volumeSlider.onValueChanged.AddListener(
+    //             delegate
+    //             {
+    //                 setMusicVolume();
+    //             }
+    //         );
+    //     }
+    // }
 }

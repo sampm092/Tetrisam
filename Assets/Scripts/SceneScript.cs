@@ -16,21 +16,7 @@ public class SceneScript : MonoBehaviour
     void Start()
     {
         Sonsistem = FindObjectOfType<AudioSource>();
-        if (screenSlide != null)
-        {
-            screenSlide.wholeNumbers = true;
-            screenSlide.minValue = 0;
-            screenSlide.maxValue = 1;
-
-            if (Screen.fullScreen)
-            {
-                screenSlide.value = 0; // fullscreen
-            }
-            else
-            {
-                screenSlide.value = 1; // windowed
-            }
-        }
+        screenSlidePos();
     }
 
     public void StartGame()
@@ -87,6 +73,44 @@ public class SceneScript : MonoBehaviour
         tapSound();
         status = !status;
         Settings.SetActive(status);
+    }
+
+    void screenSlidePos()
+    {
+        if (screenSlide != null)
+        {
+            screenSlide.wholeNumbers = true;
+            screenSlide.minValue = 0;
+            screenSlide.maxValue = 1;
+
+            if (Screen.fullScreen)
+            {
+                screenSlide.value = 0; // fullscreen
+            }
+            else
+            {
+                screenSlide.value = 1; // windowed
+            }
+        }
+    }
+
+    void SlidePos()
+    {
+        if (screenSlide != null)
+        {
+            screenSlide.wholeNumbers = true;
+            screenSlide.minValue = 0;
+            screenSlide.maxValue = 1;
+
+            if (Screen.fullScreen)
+            {
+                screenSlide.value = 0; // fullscreen
+            }
+            else
+            {
+                screenSlide.value = 1; // windowed
+            }
+        }
     }
 
     public void ExitGame()
