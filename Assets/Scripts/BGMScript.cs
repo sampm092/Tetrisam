@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class BGMScript : MonoBehaviour
 {
     private static BGMScript instance;
+    public static float musicVolume = 1f;
     private AudioSource audioSource;
-    private AudioSource audioSourceMenu;
 
     [SerializeField]
     private AudioMixer audioMixer;
@@ -31,8 +31,22 @@ public class BGMScript : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
+            // Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
         }
+    }
+
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicSlidePos();
+        }
+        else
+        {
+            setMusicVolume();
+
+        }
+        // musicSlidePos();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -61,22 +75,22 @@ public class BGMScript : MonoBehaviour
     {
         float volume = volumeSlider.value;
         audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
-    // void musicSlidePos()
-    // {
-    //     if (volumeSlider != null)
-    //     {
-    //         // Make sure the slider starts at the current volume
-    //         volumeSlider.value = 1f; // or load from PlayerPrefs / default
+    void musicSlidePos()
+    {
+        if (volumeSlider != null)
+        {
+            // Make sure the slider starts at the current volume
+            volumeSlider.value = PlayerPrefs.GetFloat("musicVolume"); // or load from PlayerPrefs / default
 
-    //         // Subscribe to value change
-    //         volumeSlider.onValueChanged.AddListener(
-    //             delegate
-    //             {
-    //                 setMusicVolume();
-    //             }
-    //         );
-    //     }
-    // }
+            // Subscribe to value change
+            volumeSlider.onValueChanged.AddListener(value =>
+            {
+                PlayerPrefs.SetFloat("musicVolume", value);
+                setMusicVolume(); // call your function
+            });
+        }
+    }
 }
