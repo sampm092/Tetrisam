@@ -1168,7 +1168,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411923734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2.7, y: 2.7, z: 2.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1234,8 +1234,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BGMScript, Assembly-CSharp
+      - m_Target: {fileID: 1893960895}
+        m_TargetAssemblyTypeName: BGMLevel, Assembly-CSharp
         m_MethodName: setMusicVolume
         m_Mode: 1
         m_Arguments:
@@ -5337,7 +5337,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793654991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2.7, y: 2.7, z: 2.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5403,7 +5403,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1893960893}
         m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
         m_MethodName: SetScreenMode
         m_Mode: 1
@@ -5826,6 +5826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893960894}
   - component: {fileID: 1893960893}
+  - component: {fileID: 1893960895}
   m_Layer: 0
   m_Name: SceneLogic
   m_TagString: Untagged
@@ -5847,7 +5848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GScript: {fileID: 0}
   Settings: {fileID: 173422692}
-  screenSlide: {fileID: 0}
+  screenSlide: {fileID: 1793654993}
   tap: {fileID: 8300000, guid: a6cafc3afe1f09f45a867b9b9580e226, type: 3}
 --- !u!4 &1893960894
 Transform:
@@ -5864,6 +5865,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893960895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893960892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd6a1eb1e2302941bf9840025edfc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 62d22ea95a937f5479abe924d699e028, type: 2}
+  volumeSlider: {fileID: 411923736}
 --- !u!1 &1904979443
 GameObject:
   m_ObjectHideFlags: 0
