@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class BGMScript : MonoBehaviour
 {
-    private static BGMScript instance;
+    private static BGMScript instanceBGM;
     public static float musicVolume = 1f;
     private AudioSource audioSource;
 
@@ -21,15 +21,15 @@ public class BGMScript : MonoBehaviour
     void Awake()
     // Awake() is called before Start(), as soon as the object is created.
     {
-        if (instance == null) //The first time a BGMScript spawns, instance is null, so this object becomes the “official” instance.
+        if (instanceBGM == null) //The first time a BGMScript spawns, instance is null, so this object becomes the “official” instance.
         {
-            instance = this; //assign this crip
+            instanceBGM = this; //assign this crip
             DontDestroyOnLoad(gameObject); // keep this across scenes even after loading other gameobjects
             audioSource = GetComponent<AudioSource>();
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded; //every time scene loaded, call onsceneloaded
         }
-        else if (instance != this)
+        else if (instanceBGM != this)
         {
             // Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
         }
@@ -44,12 +44,10 @@ public class BGMScript : MonoBehaviour
         else
         {
             setMusicVolume();
-
         }
-        // musicSlidePos();
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) //to choose what to do based on scene
     {
         if (scene.name == "Level")
         {
@@ -83,13 +81,13 @@ public class BGMScript : MonoBehaviour
         if (volumeSlider != null)
         {
             // Make sure the slider starts at the current volume
-            volumeSlider.value = PlayerPrefs.GetFloat("musicVolume"); // or load from PlayerPrefs / default
+            volumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f); // or load from PlayerPrefs / default
 
             // Subscribe to value change
             volumeSlider.onValueChanged.AddListener(value =>
             {
                 PlayerPrefs.SetFloat("musicVolume", value);
-                setMusicVolume(); // call your function
+                setMusicVolume(); // set volume value based on slider
             });
         }
     }
