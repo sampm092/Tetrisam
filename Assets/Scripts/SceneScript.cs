@@ -93,26 +93,7 @@ public class SceneScript : MonoBehaviour
             }
         }
     }
-
-    void SlidePos()
-    {
-        if (screenSlide != null)
-        {
-            screenSlide.wholeNumbers = true;
-            screenSlide.minValue = 0;
-            screenSlide.maxValue = 1;
-
-            if (Screen.fullScreen)
-            {
-                screenSlide.value = 0; // fullscreen
-            }
-            else
-            {
-                screenSlide.value = 1; // windowed
-            }
-        }
-    }
-
+    
     public void ExitGame()
     {
         Application.Quit();

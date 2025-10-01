@@ -60,7 +60,7 @@ public class BGMScript : MonoBehaviour
                 audioSource.Play(); // Resume in menus
             if (toMenuStat == true)
             {
-                toMenuStat = false;
+                toMenuStat = false; //to specify this executed if player from level scene
                 audioSource.Play();
             }
         }
@@ -75,7 +75,7 @@ public class BGMScript : MonoBehaviour
     public void setMusicVolume()
     {
         float volume = volumeSlider.value;
-        audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("music", Mathf.Log10(volume) * 20); // means: “Take my slider’s linear value (0–1), convert it into decibels so the AudioMixer understands it, and apply it to the exposed parameter called music.”
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
