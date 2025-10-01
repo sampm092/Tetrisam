@@ -5,10 +5,9 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BGMScript : MonoBehaviour
+public class BGMScript : MonoBehaviour // mostly for main scene BGM
 {
     private static BGMScript instanceBGM;
-    public static float musicVolume = 1f;
     private AudioSource audioSource;
 
     [SerializeField]

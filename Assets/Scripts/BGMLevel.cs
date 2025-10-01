@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class BGMLevel : MonoBehaviour
+public class BGMLevel : MonoBehaviour //For BGM in Level Scene
 {
-    private AudioSource audioSource;
-
     [SerializeField]
     private AudioMixer audioMixer;
 

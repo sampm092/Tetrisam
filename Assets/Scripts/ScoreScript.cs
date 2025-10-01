@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScoreScript : MonoBehaviour
+public class ScoreScript : MonoBehaviour //for score scene
 {
     public TextMeshProUGUI[] scoreTexts; // assign in Inspector (size = 4, drag your TMP objects here) : scores, scores2-4
     public GameObject ResetVer;

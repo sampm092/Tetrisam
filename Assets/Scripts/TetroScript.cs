@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetroScript : MonoBehaviour
+public class TetroScript : MonoBehaviour // For each block in every tetromino
 {
     // Start is called before the first frame update
     float fall = 0;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameOverScript : MonoBehaviour
+public class GameOverScript : MonoBehaviour //For Game Over Scene
 {
     public TextMeshProUGUI finalScore;
     public GameObject newHigh;

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScreenSliderScript : MonoBehaviour
+// Specifically For screen slider inside settings in menu and level
+// To avoid unused Slider assignment in other scene
 {
     public Slider screenSlide;
 
@@ -34,7 +36,7 @@ public class ScreenSliderScript : MonoBehaviour
         }
     }
 
-    void screenSlidePos()
+    void screenSlidePos() //to assign slider value based on screen in use
     {
         if (screenSlide != null)
         {
