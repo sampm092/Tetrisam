@@ -3098,6 +3098,7 @@ GameObject:
   - component: {fileID: 1284869513}
   - component: {fileID: 1284869512}
   - component: {fileID: 1284869514}
+  - component: {fileID: 1284869515}
   m_Layer: 0
   m_Name: StartLogic
   m_TagString: Untagged
@@ -3148,6 +3149,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenSlide: {fileID: 808603796}
+--- !u!114 &1284869515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284869511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd6a1eb1e2302941bf9840025edfc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 62d22ea95a937f5479abe924d699e028, type: 2}
+  volumeSlider: {fileID: 1738415581}
 --- !u!1 &1286892161
 GameObject:
   m_ObjectHideFlags: 0
