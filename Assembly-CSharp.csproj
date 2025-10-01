@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\BGMLevel.cs" />
     <Compile Include="Assets\Scripts\ScoreScript.cs" />
     <Compile Include="Assets\Scripts\TetroScript.cs" />
+    <Compile Include="Assets\Scripts\ScreenSliderScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

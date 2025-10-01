@@ -5403,8 +5403,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1893960893}
-        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+      - m_Target: {fileID: 1893960896}
+        m_TargetAssemblyTypeName: ScreenSliderScript, Assembly-CSharp
         m_MethodName: SetScreenMode
         m_Mode: 1
         m_Arguments:
@@ -5827,6 +5827,7 @@ GameObject:
   - component: {fileID: 1893960894}
   - component: {fileID: 1893960893}
   - component: {fileID: 1893960895}
+  - component: {fileID: 1893960896}
   m_Layer: 0
   m_Name: SceneLogic
   m_TagString: Untagged
@@ -5848,7 +5849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GScript: {fileID: 0}
   Settings: {fileID: 173422692}
-  screenSlide: {fileID: 1793654993}
   tap: {fileID: 8300000, guid: a6cafc3afe1f09f45a867b9b9580e226, type: 3}
 --- !u!4 &1893960894
 Transform:
@@ -5879,6 +5879,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 62d22ea95a937f5479abe924d699e028, type: 2}
   volumeSlider: {fileID: 411923736}
+--- !u!114 &1893960896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893960892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d55d291bb431e4899423a2b3339a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenSlide: {fileID: 1793654993}
 --- !u!1 &1904979443
 GameObject:
   m_ObjectHideFlags: 0

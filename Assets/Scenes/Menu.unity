@@ -1927,8 +1927,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1284869512}
-        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+      - m_Target: {fileID: 1284869514}
+        m_TargetAssemblyTypeName: ScreenSliderScript, Assembly-CSharp
         m_MethodName: SetScreenMode
         m_Mode: 1
         m_Arguments:
@@ -3097,6 +3097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284869513}
   - component: {fileID: 1284869512}
+  - component: {fileID: 1284869514}
   m_Layer: 0
   m_Name: StartLogic
   m_TagString: Untagged
@@ -3118,7 +3119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GScript: {fileID: 0}
   Settings: {fileID: 1777390351}
-  screenSlide: {fileID: 808603796}
   tap: {fileID: 8300000, guid: a6cafc3afe1f09f45a867b9b9580e226, type: 3}
 --- !u!4 &1284869513
 Transform:
@@ -3135,6 +3135,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1284869514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284869511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d55d291bb431e4899423a2b3339a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenSlide: {fileID: 808603796}
 --- !u!1 &1286892161
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,6 +4176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 62d22ea95a937f5479abe924d699e028, type: 2}
   volumeSlider: {fileID: 1738415581}
+  toMenuStat: 0
 --- !u!1 &1738415579
 GameObject:
   m_ObjectHideFlags: 0
