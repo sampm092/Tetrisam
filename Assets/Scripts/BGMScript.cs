@@ -31,7 +31,7 @@ public class BGMScript : MonoBehaviour
         }
         else if (instanceBGM != this)
         {
-            // Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
+            Destroy(gameObject); // destroy other gameObject (another bgm) if theres another instance
         }
     }
 
@@ -59,7 +59,10 @@ public class BGMScript : MonoBehaviour
             if (!audioSource.isPlaying) //untuk score
                 audioSource.Play(); // Resume in menus
             if (toMenuStat == true)
+            {
+                toMenuStat = false;
                 audioSource.Play();
+            }
         }
     }
 
